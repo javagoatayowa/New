@@ -1,8 +1,14 @@
 #include <iostream>
 #include <vector>
 #include <cstring>
+#include <iomanip>//got this from ehan
 using namespace std;
 void add() {
+  
+}
+void search() {
+}
+void remove() {
 }
 int main() {
   int a = 0; 
