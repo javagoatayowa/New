@@ -9,8 +9,8 @@ class Parent {
   int id;
   char titleg[81];
   int year;
-  
 };
 int main() {
   
 }
+#endif

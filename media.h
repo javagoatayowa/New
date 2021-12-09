@@ -1,12 +1,12 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
-#ifndef MEDIAFILE
-#define MEDIAFILE
+#ifndef mediah
+#define mediah
 
-class media {
+class Parent {
  protected:
-  char id;
+  int id;
   char titleg[81];
   int year;
   
@@ -14,3 +14,4 @@ class media {
 int main() {
   
 }
+#endif

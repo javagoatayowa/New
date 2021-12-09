@@ -50,13 +50,12 @@ void add(vector<media*> &v) {
       v.push_back(f);
    }				
 }
-void search(vector <media*> v) {
+void search(vector <media*> v&) {
   cout<<"What is the title of the media ur wanting??";
   char title[81];
   cin>>title;
   Vector<media*>::iterator iterator;
-  cout<<"Enter title of media";
-  for(iterator = v.begin(); iterator<v.end(); iterator++) {
+  for(iterator = v.begin(); iterator<v.end(); iterator++) {//Checking if the iterator(the media) has characteristics of a game, movie or music.
     if(strcmp((iterator*)->titleg),title) {
       if((iterator*)-> rating !=NULL) {
 	if((iterator*)->pub != NULL) {
@@ -74,15 +73,63 @@ void search(vector <media*> v) {
 	}
       }
       else {
-	
-      }
-      
+	cout<<(iterator*)->titleg;
+	cout<<(iterator*)-> artist;
+	cout<<(iterator*)-> year;
+	cout<<(iterator*) -> duration;
+	cout<<(iterator*) ->pub;
+      } 
     }
   }
 }
-void remove() {
+void remove(vector <media*> v&) {
+  cout<<"What is the title of the media ur deleting??";
+  char title[81];
+  cin>>title;
+  Vector<media*>::iterator iterator;
+  cout<<"You are deleting the following:";
+  int count;
+  for(iterator = v.begin(); iterator<v.end(); iterator++) {
+    //Checking if the iterator(the media) has characteristics of a game, movie or music.
+    count++;
+    if(strcmp((iterator*)->titleg),title) {
+      if((iterator*)-> rating !=NULL) {
+        if((iterator*)->pub != NULL) {
+          cout<<(iterator*)->titleg;
+          cout<<(iterator*)->year;
+          cout<<(iterator*) -> pub;
+          cout<<(iterator*) -> rating;
+        }
+        else {
+          cout<<(iterator*) -> titleg;
+          cout<<(iterator*) -> artist;
+          cout<<(iterator*) -> year;
+          cout<<(iterator*) -> duration;
+          cout<<(iterator*) ->pub;
+        }
+      }
+      else {
+        cout<<(iterator*)->titleg;
+        cout<<(iterator*)-> artist;
+        cout<<(iterator*)-> year;
+        cout<<(iterator*) -> duration;
+        cout<<(iterator*) ->pub;
+      }
+    }
+    cout<<"you going to delete?";
+    char yn;
+    cin>>yn;
+    if(yn == 'y') {
+      cout<<"Thats pretty tough.";
+      v.erase(v.begin()+count);
+    }
+    else{
+      cout<<"Okay";
+    }
+  }
+
 }
-int main() {
+int main() {//where everything gets called
   vector <media*> v;
   int a = 0; 
   while (a==0) {
@@ -96,8 +143,12 @@ int main() {
     else {
       if(strcmp(str,"add") == 0) {
 	add(v);
-	for(int i=0; i < v.size(); i++)
-   std::cout << v.at(i) << ' ';
+      }
+      else if(strcmp(str,"search") == 0) {
+	search(v);
+      }
+      else if(strcmp(str,"remove") == 0) {
+	remove(v);
       }
   }
   return 0;
