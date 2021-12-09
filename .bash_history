@@ -162,3 +162,27 @@ g++ -o Classes Classes.cpp
 g++ -o Classes Classes.cpp
 g++ -o Classes Classes.cpp
 emacs movies.cpp
+emacs movies.cpp
+emacs movies.h
+emacs movie.cpp
+emacs movie.h
+emacs movie.cpp
+git add .
+git commit -m"3rd push";
+git commit -m"4th push";
+git add .
+git commit -m"4th push"l
+git push origin master
+emacs Classes.cpp
+emacs music.h
+emacs songs.h
+emacs music.h
+emacs media.h
+emacs media.cpp
+emacs videogames.cpp
+emacs videogames.h
+emacs videogames.h
+emacs music.h
+emacs music.cpp
+emacs videogames.h
+emacs videogames.cpp

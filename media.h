@@ -4,14 +4,13 @@
 #ifndef mediah
 #define mediah
 
-class Parent {
+class media {
  protected:
-  int id;
   char titleg[81];
   int year;
-  
+  char* getitle();
+  int getyear();
+  ~virtual ~media();
 };
-int main() {
-  
-}
+
 #endif

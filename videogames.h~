@@ -1,7 +1,8 @@
-#include <Media.h>
-class VideoGames {
- protected:
- char 
+#include "media.h"
+class videogames:: public medias{
+  char publisher[81];
+  char rating[81];
+  
 };
 int main() {
 }

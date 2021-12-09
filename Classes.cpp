@@ -3,9 +3,12 @@
 #include <cstring>
 #include <iomanip>//got this from ehan
 #include "media.h"
-#include "videogames.h"//Used Ehans method to add each part to the constructor because my method was not working properly.
+#include "videogames.h"
+#include "music.h"
+#include "movie.h"
+//Used Ehans method to add each part to the constructor because my method was not working properly, and also got some help in the .h  and overall class interaction part of video games and media.h. (I wanted to make sure if I was doing the right thing)
 using namespace std;
-void add(vector<media*> &v) {
+void add(vector<media*> &v) {//add function
   char input;
   cout << "You adding music(m), games(g), or f(films)?"
   cin >> input;
@@ -50,7 +53,7 @@ void add(vector<media*> &v) {
       v.push_back(f);
    }				
 }
-void search(vector <media*> v&) {
+void search(vector <media*> v&) {//search
   cout<<"What is the title of the media ur wanting??";
   char title[81];
   cin>>title;
@@ -82,7 +85,7 @@ void search(vector <media*> v&) {
     }
   }
 }
-void remove(vector <media*> v&) {
+void remove(vector <media*> v&) {//remover
   cout<<"What is the title of the media ur deleting??";
   char title[81];
   cin>>title;
@@ -129,7 +132,7 @@ void remove(vector <media*> v&) {
   }
 
 }
-int main() {//where everything gets called
+int main() {//where everything gets called the main method
   vector <media*> v;
   int a = 0; 
   while (a==0) {

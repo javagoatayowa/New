@@ -1,0 +1,11 @@
+#include "media.h"
+class music:: public media{
+  char artist[81];
+  char rating[81];
+  char* getArtist();
+  char* getRating();
+  char* getDuration():
+  ~music();
+};
+int main() {
+}

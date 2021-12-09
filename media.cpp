@@ -1,8 +1,12 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
-#include <Media.h>
-int main() {
-  return 0;
-  
+#include "media.h"
+char* media::getitle() {
+  return title;
+}
+char* media::getyear() {
+  return year;
+}
+media::~media() {
 }
