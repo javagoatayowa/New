@@ -1,8 +1,12 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
-class Parent {
+#ifndef MEDIAFILE
+#define MEDIAFILE
+
+class media {
  protected:
+  char id;
   char titleg[81];
   int year;
   

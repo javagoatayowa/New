@@ -154,3 +154,11 @@ emacs videogames.h
 emacs Media.h
 g++ -o Classes Class
 emacs movie.h
+emacs media.h
+emacs media.h
+g++ -o Classes Classes.cpp
+g++ -o Classes Classes.cpp
+g++ -o Classes Classes.cpp
+g++ -o Classes Classes.cpp
+g++ -o Classes Classes.cpp
+emacs movies.cpp

@@ -50,13 +50,13 @@ void add(vector<media*> &v) {
       v.push_back(f);
    }				
 }
-void search(vector <media*> v) {
+void search(vector <media*> v&) {
   cout<<"What is the title of the media ur wanting??";
   char title[81];
   cin>>title;
   Vector<media*>::iterator iterator;
   cout<<"Enter title of media";
-  for(iterator = v.begin(); iterator<v.end(); iterator++) {
+  for(iterator = v.begin(); iterator<v.end(); iterator++) {//Checking if the iterator(the media) has characteristics of a game, movie or music.
     if(strcmp((iterator*)->titleg),title) {
       if((iterator*)-> rating !=NULL) {
 	if((iterator*)->pub != NULL) {
@@ -74,13 +74,16 @@ void search(vector <media*> v) {
 	}
       }
       else {
-	
-      }
-      
+	cout<<(iterator*)->titleg;
+	cout<<(iterator*)-> artist;
+	cout<<(iterator*)-> year;
+	cout<<(iterator*) -> duration;
+	cout<<(iterator*) ->pub;
+      } 
     }
   }
 }
-void remove() {
+void remove(vector <media*> v&) {
 }
 int main() {
   vector <media*> v;
