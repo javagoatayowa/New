@@ -1,16 +1,54 @@
 #include <iostream>
 #include <vector>
 #include <cstring>
+#include <iomanip>//got this from ehan
 using namespace std;
+void add(<media*> &v) {
+  cout<<"You adding m(movie), g(games), or f(films)?";
+  char c;
+  cin>> c;
+  if(c == g) {
+    cout<<"what is the title?";
+    char titleg[81];
+    cin>>titleg;
+
+    cout<<"what is the year?";
+    char year[81];
+    cin>>year;
+    cout<<"who published it?";
+    char publisher[81];
+    cin>> publisher;
+    cout<<"whats the rating?";
+    char rating[81];
+    cin>>rating;
+    
+    videogame* vg = new videogame();
+    vg s-> titleg;
+    vg s-> year;
+    vg s-> publisher;
+    vg s-> rating;
+    v.pushback(vg);
+  }
+  
+  
+}
+void search() {
+}
+void remove() {
+}
 int main() {
-  int a = 0;
+  vector <media*>
+  int a = 0; 
   while (a==0) {
+    cout<< "what do you want to do?";
     char str[81];
     
     cin>> str;
     if (strcmp(str,"quit") == 0) {
       a = 1;
     }
+    else {
+      
   }
   return 0;
 }

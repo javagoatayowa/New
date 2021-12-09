@@ -89,3 +89,68 @@ git push origin master
 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
 git push origin master
 emacs Classes.cpp
+emacs media.cpp
+emacs videogames.cpp
+emacs Media.h
+emacs videogames.h
+emacs music.cpp
+./ls
+emacs movie.h
+emacs music.h
+emacs movie.cpp
+emacs media.cpp
+git add Classes.cpp
+git commit -m"firstcommit"
+git push origin main
+git push origin master
+git push origin master
+git push origin master
+git pull origin master
+git pull
+git pull.
+git-pull(1)
+git pull
+git branch -- set-upstream-to=origin/<branch> master
+git pull
+git pull .
+git branch
+git push master
+git push origin master
+git commit -m"first change"
+git add Classes.cpp
+git commit -m"first change"
+git add
+git add .
+git commit -m"classes first comm"
+git push origin master
+git add .
+git commit -m"First commit yay!"
+git push origin master
+git pull
+git pull origin master
+git remote -v
+git remote set-url
+git remote set-url origin https://github.com/javagoatayowa/New
+git -v
+git push origin master
+git push origin master
+git push origin master
+emacs Classes.cpp
+emacs Classes.cpp
+emacs Classes.cpp
+ls
+emacs Classes.h
+emacs Classes.cpp
+emacs Classes.cpp
+emacs videogames.cpp
+emacs videogames.h
+emacs games.cpp
+emacs classes.cpp
+emacs classes.cpp
+emacs Classes.cpp
+emacs Classes.cpp
+emacs Classes.cpp
+emacs videogames.h
+emacs Media.h
+g++ -o Classes Class
+emacs movie.h

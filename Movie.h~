@@ -1,0 +1,9 @@
+
+#include <movie.cpp>
+#include <movie.h>
+#include <music.cpp>
+#include <music.h>
+
+int main() {
+  return 0;
+}
