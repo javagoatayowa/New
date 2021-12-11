@@ -1,0 +1,14 @@
+#ifndef MUSIC_H
+#define MUSIC_H
+#include "media.h"
+class music: public media {
+public:
+  char gpub[81];//Mr G!
+  int duration;
+  char artist[81];
+  char* getESRBR();
+  char* getGPUB();
+  void printMedia();
+  ~videogames();
+};
+#endif

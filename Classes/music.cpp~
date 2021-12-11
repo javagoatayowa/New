@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cstring>
+#include<vector>
+#include "music.h"
+using namespace std;
+char* music::getGPUB() {
+  return gpub;
+}
+char* music::getArtist(){
+  return artist;
+}
+int music::getDuration() {
+  return duration;
+}
+void music::printMedia() {
+  cout<<titleg;
+  cout<<year;
+  cout<<artist;
+  cout<<GPUB;
+  cout<<duration;
+}
+music::~music() {
+
+}

@@ -5,10 +5,12 @@
 #include <limits>
 #include "media.h"
 #include "videogames.h"
-using namespace std;//Used a lot of nihals help because he helped me fix errors, he helped me with my search method. 
+#include "music.h"
+#include "movie.h"
+using namespace std;//Used a lot of nihals help because he helped me fix errors, he helped me with my search method. He also explained virtual functions to me and destructors 
 void add(vector<media*> &v) {//add function
-  //music* musicp = new Music();
-  //movie* moviep = new Movies();
+  music* musicp = new music();
+  movie* f = new movie();
   videogames* gamep = new videogames();
   char input;
   cout << "You adding music(m), games(g), or f(films)?" << endl;
@@ -28,23 +30,29 @@ void add(vector<media*> &v) {//add function
       cin >> gamep->esrbr; 
       (v).push_back(gamep);
   }
-  /*
-  if(input == 'm') {
-      music* m = new music();
+  if(input == 'm') {//if music
+      char titleg[81];
+      int year;
+      char artist[81];
+      int duration;
+      char gpub[81];
       cout << "Whats title";
-      cin >> m->titleg;
+      cin >> musicp->titleg;
       cout << "Whats the artist name";
-      cin >> m->artist;
+      cin >> musicp->artist;
       cout << "Whats year?";
-      cin >> m->year;
+      cin >> musicp->year;
       cout << "Duration?";
-      cin >> m->duration;
+      cin >> musicp->duration;
       cout << "Who is publisher? ";
-      cin >> m->pub;
-      v.push_back(m);
+      cin >> musicp->gpub;//I honestly dont know why this is still called gpub, but hey! That works too!
+      v.push_back(musicp);
    }
-   if(input == 'f') {
-      movie* f = new movie();
+  if(input == 'f') {//if movie
+     char titleg[81];
+      int year;
+      char duration[81];
+      char MPCR[81];
       cout << "Whats title";
       cin >> f->titleg;
       cout << "Whats director name?";
@@ -54,22 +62,21 @@ void add(vector<media*> &v) {//add function
       cout << "Duration?";
       cin >> f->duration;
       cout << "Age Rating?";
-      cin >> f->rating;
+      cin >> f->MPCR;
       v.push_back(f);
    }
-  */
 }
 void removeMedia(vector<media*> &v) {//search function
-  char input1[10];
+  char input1;
   cout << "t or y?" << endl;
   cin >> input1;
-  cin.ignore();
-  if (strcmp(input1, "t") == 0) {
+  cin.ignore();//two if statements to se what thye wanna search by
+  if (input1 == 't') {
     char input[50];
     cout << "title:" << endl;
     cin.getline(input, 50);
     cout<<"Heres what ur deleting";
-    for (int i = 0; i < v.size(); i++) {
+    for (int i = 0; i < v.size(); i++) {//findidng the part
       if (strcmp(v[i]->titleg, input) == 0) {
 	v[i]->printMedia();
 	cout<<endl;
@@ -86,7 +93,7 @@ void removeMedia(vector<media*> &v) {//search function
 
 
   }
-  else if (strcmp(input1, "y") == 0) {
+  else if (input1 == 'y') {
     int input2;
     cout << "year:" << endl;
     cin >> input2;
@@ -105,15 +112,15 @@ void removeMedia(vector<media*> &v) {//search function
 
 }
 void searchMedia(vector<media*> &v) {//search function
-  char input1[10];
+  char input1;
   cout << "t or y?" << endl;
   cin >> input1;
   cin.ignore();
-  if (strcmp(input1, "t") == 0) {
+  if (input1 == 't') {
     char input[50];
     cout << "title:" << endl;
     cin.getline(input, 50);
-    for (int i = 0; i < v.size(); i++) {
+    for (int i = 0; i < v.size(); i++) {//finding the media and printing it with the print functions
       if (strcmp(v[i]->titleg, input) == 0) {
         v[i]->printMedia();
         cout<<endl;
@@ -123,7 +130,7 @@ void searchMedia(vector<media*> &v) {//search function
 
 
   }
-  else if (strcmp(input1, "y") == 0) {
+  else if (input1 == 'y') {
     int input2;
     cout << "year:" << endl;
     cin >> input2;

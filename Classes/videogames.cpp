@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
-#include "media.h"
+#include "media.h"//videogames.cpp file, with the getters and this was basically the base of all the other files. 
 using namespace std;
 
 char* videogames::getESRBR() {
@@ -11,13 +11,13 @@ char* videogames::getESRBR() {
 char* videogames::getGPUB() {
   return gpub;
 }
-void videogames::printMedia() {
+void videogames::printMedia() {//printer
   cout<<titleg;
   cout<<year;
   cout<<esrbr;
   cout<<gpub;
 }
-videogames::~videogames() {
+videogames::~videogames() {//DESTRUCTOR HAHAHA!!!
   
 }
 

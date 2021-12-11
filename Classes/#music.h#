@@ -1,0 +1,14 @@
+
+using namespace std;
+class music: public media {
+public:
+  char gpub[81]; //Mr G!(Yes, I did this on another file too)
+  int duration;
+  char artist[81];
+  char* getArtist();
+  char* getGPUB();
+  int getDuration();
+  void printMedia();
+  ~music();//OH NO, IS THAT A DESTRUCTOR! NOOOO(I know I am not funny)
+};
+#endif
