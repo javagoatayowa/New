@@ -14,6 +14,10 @@ char* videogames::getGPUB() {
 void videogames::printMedia() {
   cout<<titleg;
   cout<<year;
-  //cout<<getESRBR();
-  //cout<<getGPUB();
+  cout<<esrbr;
+  cout<<gpub;
 }
+videogames::~videogames() {
+  
+}
+

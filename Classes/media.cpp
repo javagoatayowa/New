@@ -13,7 +13,7 @@ int media::getYear() {
 }
 void media::printMedia() {
   cout<<titleg;
-  //cout<<esrbr;
-  //cout<<gpub;
   cout<<year;
+}
+media::~media() {
 }

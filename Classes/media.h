@@ -12,8 +12,8 @@ public:
   int year;
   char* getTitleg();
   int getYear();
-  void printMedia();
-  
+  virtual void printMedia();
+  ~media();
 };
 
 

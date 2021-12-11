@@ -9,5 +9,6 @@ public:
   char* getESRBR();
   char* getGPUB();
   void printMedia();
+  ~videogames();
 };
 #endif

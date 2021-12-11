@@ -59,6 +59,51 @@ void add(vector<media*> &v) {//add function
    }
   */
 }
+void removeMedia(vector<media*> &v) {//search function
+  char input1[10];
+  cout << "t or y?" << endl;
+  cin >> input1;
+  cin.ignore();
+  if (strcmp(input1, "t") == 0) {
+    char input[50];
+    cout << "title:" << endl;
+    cin.getline(input, 50);
+    cout<<"Heres what ur deleting";
+    for (int i = 0; i < v.size(); i++) {
+      if (strcmp(v[i]->titleg, input) == 0) {
+	v[i]->printMedia();
+	cout<<endl;
+	 cout<< "You sure you want to delete this?";
+	 char yn;
+	 cin>>yn;
+	 if (yn == 'y') {
+	   v.erase(v.begin()+i);
+	 }
+
+
+      }
+    }
+
+
+  }
+  else if (strcmp(input1, "y") == 0) {
+    int input2;
+    cout << "year:" << endl;
+    cin >> input2;
+    for (int i = 0; i < v.size(); i++) {
+      if (v[i]->year == input2) {
+        v[i]->printMedia();
+	char yn2;
+	cin>>yn2;
+	if(yn2 == 'y') {
+	  v.erase(v.begin()+i);
+	}
+      }
+    }
+
+  }
+
+}
 void searchMedia(vector<media*> &v) {//search function
   char input1[10];
   cout << "t or y?" << endl;
@@ -70,11 +115,11 @@ void searchMedia(vector<media*> &v) {//search function
     cin.getline(input, 50);
     for (int i = 0; i < v.size(); i++) {
       if (strcmp(v[i]->titleg, input) == 0) {
-	v[i]->printMedia();
-	cout<<endl;
+        v[i]->printMedia();
+        cout<<endl;
       }
     }
-    
+
 
 
   }
@@ -92,10 +137,11 @@ void searchMedia(vector<media*> &v) {//search function
 
 }
 
+
 int main(){//main method
   vector <media*> media;
   int a = 0;
-  cout<<"what do you want to do?";
+  cout<<"what do you want to do? add to add, search to search, and remove to remove!";
   while (a == 0) {
     char str[81];
 
@@ -111,6 +157,10 @@ int main(){//main method
       else if(strcmp(str,"search") == 0) {
 	searchMedia(media);
 	cout<<"What else do you need to do?";
+      }
+      else if(strcmp(str,"remove") == 0) {
+	removeMedia(media);
+	cout<<"what else do you need to do?";
       }
     }
   }
