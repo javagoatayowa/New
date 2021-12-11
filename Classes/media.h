@@ -4,19 +4,16 @@
 #include <cstring>
 using namespace std;
 class media {
-protected:
-  char titleg[81];
-  int year;
 
   
   
 public:
-  media(char*titleg, int year){
-   virtual void print();
+  char titleg[81];
+  int year;
   char* getTitleg();
-  int getyear();
-  virtual ~media();
-  } 
+  int getYear();
+  void printMedia();
+  
 };
 
 

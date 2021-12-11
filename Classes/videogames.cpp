@@ -11,7 +11,9 @@ char* videogames::getESRBR() {
 char* videogames::getGPUB() {
   return gpub;
 }
-void videogames::printVG() {
-  cout<<getESRBR();
-  cout<<getGPUB();
+void videogames::printMedia() {
+  cout<<titleg;
+  cout<<year;
+  //cout<<getESRBR();
+  //cout<<getGPUB();
 }

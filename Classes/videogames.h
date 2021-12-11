@@ -2,14 +2,12 @@
 #define VIDEOGAMES_H
 #include "media.h"
 class videogames: public media {
+public:
+  //videogames(char* titleg, int year, char* gpub, char* esrbr);
   char gpub[81];//Mr G!
   char esrbr[81];
-public:
-  videogames(char* titleg, int year, char* gpub, char* esrbr);
   char* getESRBR();
   char* getGPUB();
-  void printVG();
-  
-
+  void printMedia();
 };
 #endif
