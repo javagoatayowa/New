@@ -1,3 +1,4 @@
+//Aneeq Chowdhury Program to help users add video games and print them out in a database
 #include <iostream>
 #include <cstring>
 #include <vector>
