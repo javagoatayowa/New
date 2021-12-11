@@ -4,7 +4,7 @@
 #include <limits>
 #include "media.h"
 #include "videogames.h"
-using namespace std;
+using namespace std;//Used a lot of nihals help because he helped me fix errors, he helped me with my search method. 
 void add(vector<media*> &v) {//add function
   //music* musicp = new Music();
   //movie* moviep = new Movies();
@@ -21,12 +21,10 @@ void add(vector<media*> &v) {//add function
       cin >> gamep->titleg;
       cout << "Whats year";
       cin >> gamep->year;
-      /*
       cout << "Who is publisher";
       cin >> gamep->gpub;
       cout << "Age rating of game(ESRB) format" << endl;
-      cin >> gamep->esrbr;
-      */ 
+      cin >> gamep->esrbr; 
       (v).push_back(gamep);
   }
   /*
@@ -60,21 +58,19 @@ void add(vector<media*> &v) {//add function
    }
   */
 }
-void searchMedia(vector<media*> &v) {
+void searchMedia(vector<media*> &v) {//search function
   char input1[10];
   cout << "t or y?" << endl;
   cin >> input1;
   cin.ignore();
   if (strcmp(input1, "t") == 0) {
     char input[50];
-    //Takes in the title input
-    cout << "Enter title" << endl;
+    cout << "title:" << endl;
     cin.getline(input, 50);
-    //For loop for printing the specific input out
     for (int i = 0; i < v.size(); i++) {
-      cout<<"Yomama";
-      if (strcmp(v[i]->titleg, input) == 0) {//Sees if input matches the title of any media in the vector
-	v[i]->printMedia(); //prints the media out
+      if (strcmp(v[i]->titleg, input) == 0) {
+	v[i]->printMedia();
+	cout<<endl;
       }
     }
     
@@ -83,11 +79,11 @@ void searchMedia(vector<media*> &v) {
   }
   else if (strcmp(input1, "y") == 0) {
     int input2;
-    cout << "Enter in year" << endl;
+    cout << "year:" << endl;
     cin >> input2;
-    for (int i = 0; i < v.size(); i++) {//The for loop for printing
-      if (v[i]->year == input2) {//Sees if the input matches the year of any Media
-        v[i]->printMedia();//Prints the media out
+    for (int i = 0; i < v.size(); i++) {
+      if (v[i]->year == input2) {
+        v[i]->printMedia();
       }
     }
 
@@ -95,7 +91,7 @@ void searchMedia(vector<media*> &v) {
 
 }
 
-int main(){
+int main(){//main method
   vector <media*> media;
   int a = 0;
   cout<<"what do you want to do?";

@@ -1,6 +1,6 @@
 #ifndef VIDEOGAMES_H
 #define VIDEOGAMES_H
-#include "media.h"
+#include "media.h"//videogames
 class videogames: public media {
 public:
   //videogames(char* titleg, int year, char* gpub, char* esrbr);
