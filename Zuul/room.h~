@@ -1,0 +1,16 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+class Room {
+ public:
+  char description[1000];
+  char* printDescription();
+  bool haswest;
+  bool haseast;
+  bool hassouth;
+  bool hasnorth;
+  char* printDirections();
+}
+

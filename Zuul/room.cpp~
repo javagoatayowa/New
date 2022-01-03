@@ -1,0 +1,22 @@
+#include "room.h"
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+void room::printDescription() {
+  cout<<description;
+}
+void room:printDirections() {
+  if(haswest == true) {
+    cout<<"There is a west exit";
+  }
+  if(haseast == true) {
+    cout<<"There is a east exit";
+  }
+  if(hassouth == true) {
+    cout<<"There is a south exit";
+  }
+  if(hasnorth == true) {
+    cout<<"There is a north exit";
+  }
+}
