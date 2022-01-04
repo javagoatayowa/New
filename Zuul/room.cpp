@@ -17,14 +17,34 @@ void room::printDirections() {
   }
   if(hassouth == true) {
     cout<<"There is a south exit";
-    cout<<endl
+    cout<<endl;
   }
   if(hasnorth == true) {
     cout<<"There is a north exit";
     cout<<endl;
   }
-  else {
-    cout<<"There are no exits";
-    cout<< endl;
-  }
+}
+void room::printItems() {
+   cout<<"The following objects in this room are:";
+   cout<<endl;
+   if(haslaptop == true) {
+     cout<<"laptop";
+     cout<<endl;
+   }
+   if(hasmask == true) {
+     cout<<"mask";
+     cout<<endl;
+   }
+   if(hascharger == true) {
+     cout<<"charger";
+     cout<<endl;
+   }
+   if(hasswag == true) {
+     cout<<"swag fit";
+     cout<<endl;
+   }
+   if(hastrain == true) {
+     cout<<"train";
+     cout<<endl;
+   }
 }

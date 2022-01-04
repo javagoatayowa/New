@@ -1,9 +1,9 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
-
-using namespace std;
-void createroom(vector<room*> &v) {
+#include "room.h"
+#include "item.h"
+int main() {
   room* onetwenty = new room();
   room* mathclass = new room();
   room* bathroom = new room();
@@ -25,6 +25,7 @@ void createroom(vector<room*> &v) {
   onetwenty-> hascharger = false;
   onetwenty-> hasswag = false;
   onetwenty-> hastrain = false;
+  onetwenty-> haswest = true;
   strcpy(mathclass-> description, "You are in the math class, where ms mcnamee is teaching math");
   mathclass-> haslaptop = false;
   mathclass-> hasmask = false;
@@ -61,31 +62,37 @@ void createroom(vector<room*> &v) {
   electricityroom-> hascharger = true;
   electricityroom-> hasswag = false;
   electricityroom-> hastrain = false;
+  electricityroom ->haseast = true;
+  electricityroom -> haswest = true;
+  electricityroom -> hassouth = true;
   strcpy(nuclearreactor-> description, "You are in the nuclear reactor, Mr Galbraith is wearing a hazmat suit");
   nuclearreactor-> haslaptop = false;
   nuclearreactor-> hasmask = false;
   nuclearreactor-> hascharger = false;
   nuclearreactor-> hasswag = false;
   nuclearreactor-> hastrain = false;
-  strcpy(chemsitryroom-> description, "You are in the chemistry room, 2 suspicious scientists are putting some vinegar like substance in baking soda.");
+  nuclearreactor -> haseast = true;
+  nuclearreactor -> hassouth = true;
+  strcpy(chemistryroom-> description, "You are in the chemistry room, 2 suspicious scientists are putting some vinegar like substance in baking soda.");
   chemistryroom-> haslaptop = false;
   chemistryroom-> hasmask = false;
   chemistryroom-> hascharger = false;
   chemistryroom-> hasswag = false;
   chemistryroom-> hastrain = false;
+  chemistryroom -> hasnorth = true;
   strcpy(healthroom-> description, "You are in the healthroom, and apparently someone got hit by a flying laptop and it caused them to get a sprained wrist. They are in the health room now");
-  healthroom> haslaptop = false;
+  healthroom-> haslaptop = false;
   healthroom-> hasmask = true;
   healthroom-> hascharger = false;
   healthroom-> hasswag = false;
   healthroom-> hastrain = false;
   strcpy(kimjungoonnuclearstudyroom-> description, "You are in Kim Jung Un's Nuclear Study Room");
-  kingjungoonnuclearstudyroom-> haslaptop = false;
+  kimjungoonnuclearstudyroom-> haslaptop = false;
   kimjungoonnuclearstudyroom-> hasmask = false;
   kimjungoonnuclearstudyroom-> hascharger = false;
   kimjungoonnuclearstudyroom-> hasswag = false;
   kimjungoonnuclearstudyroom-> hastrain = false;
-  strcpy(kimgjungoonpersonalroom-> description, "You are in Kim Jung Un's room. You should probably leave soon....!");
+  strcpy(kimjungoonpersonalroom-> description, "You are in Kim Jung Un's room. You should probably leave soon....!");
   bathroom-> haslaptop = false;
   bathroom-> hasmask = false;
   bathroom-> hascharger = false;
@@ -109,19 +116,35 @@ void createroom(vector<room*> &v) {
   slingshotplane-> hascharger = false;
   slingshotplane-> hasswag = false;
   slingshotplane-> hastrain = false;
-}
-int main() {
-  cout<<"Hey there! You are in 1-20 lab, the best class ever to exist in Sunset High School. Only thing is, the coolest person to ever exist in Sunset suggests that you to turn in your Classes project(If you dont, you will fail the class, and why would you want to fail the best class ever? If you do, you have some thinking to do), that you had 3 weeks to do, and you are lost. Now, this caused you to enrage, and you sent your computer flying somewhere, and you dont know where it is. Now, Mr Galbraith being the icon he is, singehandedly took over the school, and made all the classes sorted numerically. You are in class 5, and you are trying to find your laptop in class 10.";
+  cout<<"Hey there! You are in 1-20 lab, the best class ever to exist in Sunset High School. Only thing is, the coolest person to ever exist in Sunset suggests that you to turn in your Classes project(If you dont, you will fail the class, and why would you want to fail the best class ever? If you do, you have some thinking to do), that you had 3 weeks to do, and you are lost. Now, this caused you to enrage, and you sent your computer flying somewhere, and you dont know where it is. you also chucked your charger lol... Find your charger and your computer!";
+  cout<<endl;
   int a = 0;
+  room* currentroom = onetwenty;
   while (a == 0) {
     cout<<"Which direction you want to go? Say 'q' to quit, w to go west, s to go south, n to go north, e to go east. say the item to pick it up and drop it";
-    cout<<"the available directions are:";
-    //getAvailableDirections();
+    cout<<endl;
+    cout<<"The description of your room is:";
+    currentroom -> printDescription();
+    cout<< endl;
+    currentroom -> printDirections();
+    cout<<endl;
+    currentroom -> printItems();
     char d;
     cin>>d;
     if(d == 'q') {
     }
-    else if(d == '
+    else if(d == 'w') {
+      if(currentroom == onetwenty) {
+	currentroom = electricityroom;
+      }
+    }
+    else if(d == 'e') {
+    }
+    else if(d == 's') {
+    }
+    else if(d == 'n') {
+    }
+
   }
   cout<<"Thanks for playing the game!";
   return 0;
