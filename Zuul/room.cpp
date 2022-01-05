@@ -1,12 +1,12 @@
 #include "room.h"
 #include <iostream>
 #include <cstring>
-
+//room functions
 using namespace std;
 void room::printDescription() {
   cout<<description;
 }
-void room::printDirections() {
+void room::printDirections() {//directiosn get printed
   if(haswest == true) {
     cout<<"There is a west exit";
     cout<<endl;
@@ -23,7 +23,7 @@ void room::printDirections() {
     cout<<"There is a north exit";
     cout<<endl;
   }
-}
+}//items get printed
 void room::printItems() {
    cout<<"The following objects in this room are:";
    cout<<endl;
@@ -40,7 +40,7 @@ void room::printItems() {
      cout<<endl;
    }
    if(hasswag == true) {
-     cout<<"swag fit";
+     cout<<"swag";
      cout<<endl;
    }
    if(hastrain == true) {
