@@ -26,36 +26,48 @@ int main() {
   onetwenty-> hasswag = false;
   onetwenty-> hastrain = false;
   onetwenty-> haswest = true;
+  onetwenty-> hasnorth = true;
+  onetwenty-> haseast = true;
   strcpy(mathclass-> description, "You are in the math class, where ms mcnamee is teaching math");
   mathclass-> haslaptop = false;
   mathclass-> hasmask = false;
   mathclass-> hascharger = false;
   mathclass-> hasswag = false;
   mathclass-> hastrain = false;
+  mathclass-> hasnorth = true;
+  mathclass-> haseast = true;
+  mathclass-> hassouth = true;
   strcpy(bathroom-> description, "You are in the bathroom. It smells really bad, because Sunset decided to partner with Taco Bell");
   bathroom-> haslaptop = false;
   bathroom-> hasmask = false;
   bathroom-> hascharger = false;
   bathroom-> hasswag = false;
   bathroom-> hastrain = false;
+  bathroom-> hasnorth = true;
+  bathroom-> haseast = true;
   strcpy(office-> description, "You are in the office, and the window is broken because some object went flying through it.");
   office-> haslaptop = true;
   office-> hasmask = false;
   office-> hascharger = false;
   office-> hasswag = false;
   office-> hastrain = false;
-  strcpy(train-> description, "You are in the - What the hell? Theres a train room? The math and physics department developed a super speed train that apparently takes you to a secret room across the globe ");
+  office-> hasnorth = true;
+  strcpy(train-> description, "You are in the - What the hell? Theres a train room? The math and physics department developed a super speed train that apparently takes you to a secret room across the globe. East of this train takes you somewhere far far away...");
   train-> haslaptop = false;
   train-> hasmask = false;
   train-> hascharger = false;
   train-> hasswag = false;
   train-> hastrain = true;
+  train-> hassouth = true;
+  train-> haseast = true;
   strcpy(cafeteria-> description, "You are in the Cafeteria. Hey, theres taco bell!");
   cafeteria-> haslaptop = false;
   cafeteria-> hasmask = false;
   cafeteria-> hascharger = false;
   cafeteria-> hasswag = false;
   cafeteria-> hastrain = false;
+  cafeteria-> haswest = true;
+  cafeteria-> hasnorth = true;
   strcpy(electricityroom-> description, "You are in the electricity room, and currently the teachers are working on developing a high class charger that charges your computer in one second");
   electricityroom-> haslaptop = false;
   electricityroom-> hasmask = false;
@@ -80,6 +92,8 @@ int main() {
   chemistryroom-> hasswag = false;
   chemistryroom-> hastrain = false;
   chemistryroom -> hasnorth = true;
+  chemistryroom -> haswest = true;
+  chemistryroom -> hassouth = true;
   strcpy(healthroom-> description, "You are in the healthroom, and apparently someone got hit by a flying laptop and it caused them to get a sprained wrist. They are in the health room now");
   healthroom-> haslaptop = false;
   healthroom-> hasmask = true;
@@ -92,55 +106,119 @@ int main() {
   kimjungoonnuclearstudyroom-> hascharger = false;
   kimjungoonnuclearstudyroom-> hasswag = false;
   kimjungoonnuclearstudyroom-> hastrain = false;
+  kimjungoonnuclearstudyroom-> haswest = true;
+  kimjungoonnuclearstudyroom-> hasnorth = true;
   strcpy(kimjungoonpersonalroom-> description, "You are in Kim Jung Un's room. You should probably leave soon....!");
+  kimjungoonpersonalroom->hassouth = true;
   bathroom-> haslaptop = false;
   bathroom-> hasmask = false;
   bathroom-> hascharger = false;
   bathroom-> hasswag = true;
   bathroom-> hastrain = false;
+  bathroom-> hasnorth = true;
+  bathroom-> haseast = true;
   strcpy(swimmingpool-> description, "You are in the swimming pool room, where people are swimming like pros. ");
   swimmingpool-> haslaptop = false;
   swimmingpool-> hasmask = false;
   swimmingpool-> hascharger = false;
   swimmingpool-> hasswag = false;
   swimmingpool-> hastrain = false;
+  swimmingpool-> hassouth = true;
+  swimmingpool-> haseast = true;
   strcpy(physicsroom-> description, "You are in the physics room. The teacher is angry that students used calculus instead of memorizing formulas on the final exam. Probably don't want to make him more mad... ");
   physicsroom-> haslaptop = false;
   physicsroom-> hasmask = false;
   physicsroom-> hascharger = false;
   physicsroom-> hasswag = false;
   physicsroom-> hastrain = false;
-  strcpy(slingshotplane-> description, "You went to the physics teacher's secret lair, and it smells horrible. There is a slingshot that sends you flying north. However, this slingshot is kinda scary...");
+  physicsroom-> haswest = true;
+  physicsroom-> hassouth = true;
+  physicsroom-> hasnorth = true;
+  strcpy(slingshotplane-> description, "You went to the physics teacher's secret lair, and it smells horrible. There is a slingshot that sends you flying east. However, this slingshot is kinda scary...");
   slingshotplane-> haslaptop = false;
   slingshotplane-> hasmask = false;
   slingshotplane-> hascharger = false;
   slingshotplane-> hasswag = false;
   slingshotplane-> hastrain = false;
+  slingshotplane-> haswest = true;
+  slingshotplane-> hasnorth = true;
+  slingshotplane-> haseast = true;
+  slingshotplane-> hassouth = true;
   cout<<"Hey there! You are in 1-20 lab, the best class ever to exist in Sunset High School. Only thing is, the coolest person to ever exist in Sunset suggests that you to turn in your Classes project(If you dont, you will fail the class, and why would you want to fail the best class ever? If you do, you have some thinking to do), that you had 3 weeks to do, and you are lost. Now, this caused you to enrage, and you sent your computer flying somewhere, and you dont know where it is. you also chucked your charger lol... Find your charger and your computer!";
   cout<<endl;
   int a = 0;
   room* currentroom = onetwenty;
+  int bruhmomentcounter = 0;
   while (a == 0) {
-    cout<<"Which direction you want to go? Say 'q' to quit, w to go west, s to go south, n to go north, e to go east. say the item to pick it up and drop it";
-    cout<<endl;
     cout<<"The description of your room is:";
     currentroom -> printDescription();
     cout<< endl;
     currentroom -> printDirections();
     cout<<endl;
     currentroom -> printItems();
+    cout<<endl;
+    cout<<"Which direction you want to go? Say 'q' to quit, w to go west, s to  \
+go south, n to go north, e to go east. say the item to pick it up and drop it";
     char d;
     cin>>d;
     if(d == 'q') {
     }
     else if(d == 'w') {
       if(currentroom == onetwenty) {
+	cout<<endl;
 	currentroom = electricityroom;
+      }
+      else if(currentroom == electricityroom) {
+	currentroom = nuclearreactor;
+      }
+      else if(currentroom = cafeteria) {
+	currentroom = bathroom;
+      }
+      else if(currentroom = chemistryroom) {
+	currentroom = mathclass;
+      }
+      else if(currentroom = physicsroom) {
+	currentroom = swimmingpool;
+      }
+      else if(currentroom = kimjungoonnuclearstudyroom) {
+	currentroom = train;
+      }
+      else if(currentroom = slingshotplane) {
+	currentroom = onetwenty;
       }
     }
     else if(d == 'e') {
+      if(currentroom == onetwenty) {
+	currentroom = slingshotplane;
+      }
+      else if(currentroom == electricityroom) {
+	currentroom = onetwenty;
+      }
+      else if(currentroom == nuclearreactor) {
+	currentroom = electricityroom;
+      }
+      else if(currentroom == mathclass) {
+	currentroom = chemistryroom;
+      }
+      else if(currentroom == bathroom) {
+	currentroom = cafeteria;
+      }
+      else if(currentroom == swimmingpool) {
+	currentroom = physicsroom;
+      }
+      else if(currentroom == train) {
+	currentroom = kimjungoonpersonalroom;
+      }
+      else if(currentroom == slingshotplane) {
+	cout<<"HAHAHHAHAAHAHAHHAAHAHAHAHAHAHAHAHHAHAHA YOU HAVE DIED!!!!!!!!!!! THE SLINGSHOT SENT YOU FLYING AND YOU WENT SO FAST THAT YOU DIED!!!!";
+	a = 1;
+      }
+      
     }
     else if(d == 's') {
+      if(currentroom == onetwenty) {
+	
+      }
     }
     else if(d == 'n') {
     }
