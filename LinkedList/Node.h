@@ -4,13 +4,13 @@
 #include "Student.h"
 using namespace std;
 class Node {
- public:
+public://the methods
   Node(Student*);
   ~Node();
   Student* getStudent();
   Node* getNext();
   void setNext(Node*);
- private:
+private://variables
   Student* student;
   Node* next;
 };

@@ -8,7 +8,5 @@ class Student {
   char second[80];//Second name
   int studentId;//The id of the student
   float GPA;//And their Gpa Aywoa mane
-  void setFirst(newfirst);
-  void setSecond(
 };
 #endif
