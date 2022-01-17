@@ -5,7 +5,8 @@ Node::Node(Student* newStudent) {
   student = newStudent;
 }
 Node::~Node() {
-  next = NULL:
+  delete student;
+  next = NULL;
 }
 void Node::setNext(Node* newNode) {
   next = newNode;
