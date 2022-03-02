@@ -137,6 +137,7 @@ int main() {
   for(int i = 0; i < strlen(input2); i++) {
     char l = input2[i];
     if(l == '0' || l == '1' || l == '2' || l == '3' || l == '4' || l == '5' || l == '6' || l == '7' || l == '8' || l == '9') {
+      //cout<<i << endl;
       q.enqueue(input2[i]);
       //cout<<input2[i];
       q.display2();
@@ -151,14 +152,17 @@ int main() {
     else if(input2[i] == ')') {
       //cout<<input2[i]<<endl;
       char d;
-      while(head->data != '(') {
-	d = peek();
+      if(head != NULL) {
+	while(head->data != '(') {
+	  d = peek();
+	  pop();
+	  q.enqueue(d);
+	}
 	pop();
-	q.enqueue(d);
       }
-      pop();
     }
     //q.display2();
+  }
   while(head!= NULL) {
     char d;
     d = peek();    
@@ -166,8 +170,7 @@ int main() {
     pop();
     q.enqueue(d);
   }
-  }
-  q.display2();
+  //q.display2();
   //  display();
   return 0;
 }
