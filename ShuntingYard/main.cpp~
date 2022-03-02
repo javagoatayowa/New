@@ -56,5 +56,4 @@ int main() {
    push('H');
    display();
    return 0;
-  }
 }
