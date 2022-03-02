@@ -155,10 +155,13 @@ int main() {
       if(head != NULL) {
 	while(head->data != '(') {
 	  d = peek();
-	  pop();
+	  //pop();
+	  head = head->link;
+	  // q.display2();
 	  q.enqueue(d);
+	  //head = head->link;
 	}
-	pop();
+	//pop();
       }
     }
     //q.display2();
@@ -167,10 +170,10 @@ int main() {
     char d;
     d = peek();    
     // cout<<d<<endl;
-    pop();
+    head = head ->link;
     q.enqueue(d);
   }
-  //q.display2();
+  q.display2();
   //  display();
   return 0;
 }
