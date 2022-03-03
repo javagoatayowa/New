@@ -9,10 +9,9 @@ class BinaryTree {
   BinaryTree* right;
   BinaryTree* next;
   BinaryTree* getNext();
-  void setData(char d);
   void setRight(BinaryTree* nr);
   void setLeft(BinaryTree* nl);
-  char getData();
+  void setNext(BinaryTree* nn);
   BinaryTree* getLeft();
   BinaryTree* getRight();
   BinaryTree(char d);

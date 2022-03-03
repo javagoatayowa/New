@@ -240,25 +240,37 @@ int main() {//main
   //cout<<q.peek();//the final binary tree conversion process
   while(temp != NULL) {
     char top = temp->data;
+    temp = temp->next;
     //q.dequeue();
     // cout<< top << endl;
     if(isdigit(top)) {
       BinaryTree* newBin = new BinaryTree(top);
-      cout<<newBin<<datax << endl;
+      //      cout<<newBin->datax << endl;
       BPush(BH,newBin);
     }
     else {
       BinaryTree* newBin = new BinaryTree(top);
+      //cout<<newBin->datax<<endl;
       BinaryTree* tempB = NULL;
       BTpop(BH, tempB);
       newBin->setRight(tempB);
+      // cout<<newBin->getRight()->datax;
       BTpop(BH,tempB);
       newBin->setLeft(tempB);
       BPush(BH,newBin);
+      //      cout<<newBin->getLeft()->datax;
     }
-    temp = temp->next;
   }
   //PB(BH);
+  cout<<"prefix: ";
+  prefix(BH);
+  cout<<endl;
+  cout<<"postfix: ";
+  postfix(BH);
+  cout<<endl;
+  cout<<"infix: ";
+  infix(BH);
+  cout<<endl;
   //  display();
   return 0;
 }

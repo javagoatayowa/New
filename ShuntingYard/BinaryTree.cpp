@@ -3,17 +3,14 @@
 #include <cstring>
 //methods
 using namespace std;
-void BinaryTree::setData(char d) {
-  datax = d;
-}
 void BinaryTree::setRight(BinaryTree* nr) {
   right = nr;
 }
 void BinaryTree::setLeft(BinaryTree* nl) {
   left = nl;
 }
-char BinaryTree::getData() {
-  return datax;
+void BinaryTree::setNext(BinaryTree* nn) {
+  next = nn;
 }
 BinaryTree* BinaryTree::getRight() {
   return right;
@@ -26,7 +23,11 @@ BinaryTree* BinaryTree::getNext() {
 }
 BinaryTree::BinaryTree(char d) {
   datax = d;
+  right = NULL;
+  left = NULL;
+  next = NULL;
 }
-
+BinaryTree::~BinaryTree() {
+}
 
 
