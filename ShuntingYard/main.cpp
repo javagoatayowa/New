@@ -1,17 +1,19 @@
-#include <iostream>
+#include <iostream>//A code created by me to do shunting yard algorithm and to convert equations to infix prefix or postfix. I used help from https://www.includehelp.com/code-snippets/implementation-of-queue-using-linked-list-in-cpp.aspx for queues and stacks: https://www.geeksforgeeks.org/implement-a-stack-using-singly-linked-list/
+//Nihal and Ehan also helped me with the bInary tree and its methods.
+//3/2/2022
 #include <bits/stdc++.h>
 #include <ctype.h>
-#include "BinaryTree.h"
+#include "BinaryTree.h"//inclusions
 using namespace std;
-struct Node {
+struct Node {//Node struct for stacks
   Node* link;
   char data;
 };
-struct QueueN{
+struct QueueN{//Queue Node
   char data;
   QueueN* next;
 };
-class Queue {
+class Queue {//QUeue class
   public:
     QueueN *front,*rear;
     Queue(){front=rear=NULL;}
@@ -20,7 +22,7 @@ class Queue {
     void display2();
     char peek();
     ~Queue();
-};
+};//methods below:
 char Queue::peek() {
   return front->data;
 }
@@ -46,7 +48,6 @@ void Queue::display2(){
         return;
     }
     QueueN *temp=front;
-    //will check until NULL is not found
     while(temp){
         cout<<temp->data<<" ";
         temp=temp->next;
@@ -61,12 +62,12 @@ void Queue :: dequeue()
     }
      
     cout<<front->data<<" is being deleted "<<endl;
-    if(front==rear)//if only one node is there
+    if(front==rear)
         front=rear=NULL;
     else
         front=front->next;
 }
- 
+//destructor
 Queue ::~Queue()
 {
     while(front!=NULL)
@@ -77,9 +78,9 @@ Queue ::~Queue()
     }
     rear=NULL;
 }
-Node* head;
+Node* head;//head of stacks and binary tree
 BinaryTree* BH = NULL;
-void push(char data) {
+void push(char data) {//other functions
   Node* temp = new Node();
   if(!temp) {
     exit(1);
@@ -133,7 +134,7 @@ void display() {
       }
     }
 }
-void PB(BinaryTree* &bH) {
+void PB(BinaryTree* &bH) {//binary tree functions
   BinaryTree *temp = bH;
   while(temp != NULL) {
     cout<<"top:" << endl;
@@ -189,12 +190,12 @@ void BPush(BinaryTree* &bH, BinaryTree* & curr) {
   temp->next = bH;
   bH = temp;
 }
-int main() {
-  Queue q;
+int main() {//main
+  Queue q;//the queue
   cout<<"enter input" << endl;
-  char input2[80];
+  char input2[80];//input
   cin.getline(input2,80);
-  //  push('5');
+  //  push('5');//iterating thorugh the array
   for(int i = 0; i < strlen(input2); i++) {
     char l = input2[i];
     if(l == '0' || l == '1' || l == '2' || l == '3' || l == '4' || l == '5' || l == '6' || l == '7' || l == '8' || l == '9') {
@@ -209,7 +210,7 @@ int main() {
       push(input2[i]);
       //   display();
       //   cout << endl;
-    }
+    }//if a right parenthesis is detected
     else if(input2[i] == ')') {
       //cout<<input2[i]<<endl;
       char d;
@@ -232,18 +233,18 @@ int main() {
     q.enqueue(d);
     }
   cout<<"The queue right now is: " << endl;
-  q.display2();
+  q.display2();//queue display
   cout<< endl;
   QueueN *temp = q.front;
   //q.dequeue();
-  //cout<<q.peek();
+  //cout<<q.peek();//the final binary tree conversion process
   while(temp != NULL) {
     char top = temp->data;
     //q.dequeue();
     // cout<< top << endl;
     if(isdigit(top)) {
-      cout<<top;
       BinaryTree* newBin = new BinaryTree(top);
+      cout<<newBin<<datax << endl;
       BPush(BH,newBin);
     }
     else {

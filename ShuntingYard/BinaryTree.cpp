@@ -1,7 +1,7 @@
 #include "BinaryTree.h"
-#include <iostream>
+#include <iostream>//inclusion
 #include <cstring>
-
+//methods
 using namespace std;
 void BinaryTree::setData(char d) {
   datax = d;

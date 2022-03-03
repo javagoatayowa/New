@@ -1,10 +1,10 @@
-#include <iostream>
+#include <iostream>//inclusions
 #include <cstring>
 //Binary Tree Class
 
 class BinaryTree {
  public:
-  char datax;
+  char datax;//parts of binary tree
   BinaryTree* left;
   BinaryTree* right;
   BinaryTree* next;
