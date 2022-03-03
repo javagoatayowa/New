@@ -134,23 +134,6 @@ void display() {
       }
     }
 }
-void PB(BinaryTree* &bH) {//binary tree functions
-  BinaryTree *temp = bH;
-  while(temp != NULL) {
-    cout<<"top:" << endl;
-    cout<<temp->datax<<endl;
-    cout<<"left:" << endl;
-    cout<<temp->getLeft()->datax << endl;
-    cout<<"right:" << endl;
-    cout<<temp->getRight()->datax<<endl;
-    if(isdigit(temp->getLeft()->datax)) {
-      temp = temp->getRight();
-    }
-    else if(isdigit(temp->getRight()->datax)) {
-      temp = temp->getLeft();
-    }
-  }
-}
 char BP(BinaryTree* bH) {
   return bH->datax;
 }
