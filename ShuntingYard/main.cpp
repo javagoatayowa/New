@@ -1,7 +1,8 @@
 #include <iostream>
 #include <bits/stdc++.h>
+#include <ctype.h>
+#include "BinaryTree.h"
 using namespace std;
-
 struct Node {
   Node* link;
   char data;
@@ -17,8 +18,12 @@ class Queue {
     void enqueue(char c);
     void dequeue();
     void display2();
+    char peek();
     ~Queue();
 };
+char Queue::peek() {
+  return front->data;
+}
 void Queue::enqueue(char c){
     QueueN *temp=new QueueN;
     if(temp==NULL){
@@ -35,7 +40,6 @@ void Queue::enqueue(char c){
         rear=temp;
     }
 }
- 
 void Queue::display2(){
     if(front==NULL){
         cout<<"Underflow."<<endl;
@@ -74,6 +78,7 @@ Queue ::~Queue()
     rear=NULL;
 }
 Node* head;
+BinaryTree* BH = NULL;
 void push(char data) {
   Node* temp = new Node();
   if(!temp) {
@@ -112,7 +117,7 @@ void pop() {
   else {
     temp = head;
     head = head->link;
-    free(head);
+    free(temp);
   }
 }
 void display() {
@@ -127,7 +132,63 @@ void display() {
 	temp = temp->link;
       }
     }
+}
+void PB(BinaryTree* &bH) {
+  BinaryTree *temp = bH;
+  while(temp != NULL) {
+    cout<<"top:" << endl;
+    cout<<temp->datax<<endl;
+    cout<<"left:" << endl;
+    cout<<temp->getLeft()->datax << endl;
+    cout<<"right:" << endl;
+    cout<<temp->getRight()->datax<<endl;
+    if(isdigit(temp->getLeft()->datax)) {
+      temp = temp->getRight();
+    }
+    else if(isdigit(temp->getRight()->datax)) {
+      temp = temp->getLeft();
+    }
   }
+}
+char BP(BinaryTree* bH) {
+  return bH->datax;
+}
+void BTpop(BinaryTree* &bH, BinaryTree* &curr) {
+  curr = bH;
+  bH = bH->next;
+}
+void postfix(BinaryTree* curr) {
+  if(curr->left != NULL) {
+    postfix(curr->left);
+  }
+  if(curr->right != NULL) {
+    postfix(curr->right);
+  }
+  cout<<curr->datax;
+}
+void prefix(BinaryTree* curr) {
+  cout<<curr->datax;
+  if(curr->left != NULL) {
+    prefix(curr->left);
+  }
+  if(curr->right != NULL) {
+    prefix(curr->right);
+  }
+}
+void infix(BinaryTree* curr) {
+  if(curr->left != NULL) {
+    infix(curr->left);
+  }
+  cout<<curr->datax;
+  if(curr->right != NULL) {
+    infix(curr->right);
+  }
+}
+void BPush(BinaryTree* &bH, BinaryTree* & curr) {
+  BinaryTree* temp = curr;
+  temp->next = bH;
+  bH = temp;
+}
 int main() {
   Queue q;
   cout<<"enter input" << endl;
@@ -140,14 +201,14 @@ int main() {
       //cout<<i << endl;
       q.enqueue(input2[i]);
       //cout<<input2[i];
-      q.display2();
-      cout << endl;
+      // q.display2();
+      //      cout << endl;
     }
     else if(input2[i] == '+' || input2[i] == '-' || input2[i] == '*' || input2[i] == '/'|| input2[i] == '^' || input2[i] == '(') {
       //cout<<input2[i] << endl;
       push(input2[i]);
-      display();
-      cout << endl;
+      //   display();
+      //   cout << endl;
     }
     else if(input2[i] == ')') {
       //cout<<input2[i]<<endl;
@@ -155,25 +216,48 @@ int main() {
       if(head != NULL) {
 	while(head->data != '(') {
 	  d = peek();
-	  //pop();
-	  head = head->link;
+	  pop();
 	  // q.display2();
 	  q.enqueue(d);
-	  //head = head->link;
 	}
-	//pop();
+	pop();
       }
     }
-    //q.display2();
   }
   while(head!= NULL) {
     char d;
     d = peek();    
     // cout<<d<<endl;
-    head = head ->link;
+    pop();
     q.enqueue(d);
-  }
+    }
+  cout<<"The queue right now is: " << endl;
   q.display2();
+  cout<< endl;
+  QueueN *temp = q.front;
+  //q.dequeue();
+  //cout<<q.peek();
+  while(temp != NULL) {
+    char top = temp->data;
+    //q.dequeue();
+    // cout<< top << endl;
+    if(isdigit(top)) {
+      cout<<top;
+      BinaryTree* newBin = new BinaryTree(top);
+      BPush(BH,newBin);
+    }
+    else {
+      BinaryTree* newBin = new BinaryTree(top);
+      BinaryTree* tempB = NULL;
+      BTpop(BH, tempB);
+      newBin->setRight(tempB);
+      BTpop(BH,tempB);
+      newBin->setLeft(tempB);
+      BPush(BH,newBin);
+    }
+    temp = temp->next;
+  }
+  //PB(BH);
   //  display();
   return 0;
 }

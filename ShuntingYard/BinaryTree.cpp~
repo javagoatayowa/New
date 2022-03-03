@@ -1,0 +1,32 @@
+#include "BinaryTree.h"
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+void BinaryTree::setData(char d) {
+  datax = d;
+}
+void BinaryTree::setRight(Binary* nr) {
+  right = nr;
+}
+void BinaryTree::setLeft(Binary* nl) {
+  left = nl;
+}
+char BinaryTree::getData() {
+  return datax;
+}
+BinaryTree* BinaryTree::getRight() {
+  return nr;
+}
+BinaryTree* BinaryTree::getLeft() {
+  return nl;
+}
+BinaryTree* BinaryTree::getNext() {
+  return next;
+}
+BinaryTree::BinaryTree(char d) {
+  datax = d;
+}
+
+
+
