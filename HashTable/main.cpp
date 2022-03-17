@@ -1,7 +1,8 @@
 #include <iostream>
 #include <cstring>
-
+#include <array>
 using namespace std;
+//My code for hash table implementation for student list, by Aneeq Chowdhury. I used https://stackoverflow.com/questions/64166806/c-any-way-to-initialize-srand-multiple-times
 
 struct Node {
   char * firstname;
@@ -9,21 +10,23 @@ struct Node {
   int id;
   double gpa;
   Node* next;
-};
-int main() {
+};//node struct
+int main() {//main method
+  //int index = rand() %5;
+  srand(time(NULL));     
   Node** hashtable;
   hashtable = new Node* [151];
   Node** hashtable2;
   hashtable2 = new Node*[302];
   for (int i = 0; i< 151; i++) {
-    hashtable[i] = NULL;
+    hashtable[i] = NULL;//making whole table null;
   }
   int a = 0;
   int collisioncount = 0;
   while(a == 0) {
     char input[81];
     cin>>input;
-    if(strcmp(input,"ADD") == 0) {
+    if(strcmp(input,"ADD") == 0) {// add function
       char firstname2[81];
       char secondname2[81];
       int id;
@@ -53,7 +56,7 @@ int main() {
 	 cout<<"done" << endl;
          //cout<<hashtable[num]->firstname << endl;
       }
-      else {
+      else {//if collision
 	//cout<<hashtable[num]->firstname << endl;
 	//cout<<"collision" << endl;
 	collisioncount++;
@@ -95,8 +98,8 @@ int main() {
       //      delete[] secondname2;
     }
     else if(strcmp(input,"QUIT") == 0) {
-      a = 1;
-    }
+      a = 1;//quit method
+    }//print 
     else if(strcmp(input,"PRINT") == 0) {
       if(collisioncount > 3) {
 	for(int i = 0; i < 302; i++) {
@@ -127,7 +130,7 @@ int main() {
         }
       }
     }
-    else if(strcmp(input,"DELETE") == 0) {
+    else if(strcmp(input,"DELETE") == 0) {//delete method
       cout<<"Who do you want to delete?" << endl;
       int idin;
       cin>>idin;
@@ -259,6 +262,75 @@ int main() {
 
       }
        */
+    }
+    else if(strcmp(input,"Random")== 0 ) {//random student generator
+      //     int index = rand() % 5;
+      //      cout<<index;
+      //      int index2 = rand() % 5;
+      //cout << index2;
+      /*
+      double u;
+      for (int i = 0; i < 1; i++) 
+      {
+         u =  (float) rand()/5;
+      }
+      cout<<u * 10;
+      */
+      int index = rand() %5;
+      int index2 = rand() %5;
+      char arr[4];
+      char arr2[4];
+      //cout<<index;
+      float u;
+      u = (float)rand()/5;
+      //      cout<<u;
+      if(index == 0) {
+	strcpy(arr, "bob");
+      }
+      else if(index == 1) {
+        strcpy(arr, "oob");
+      }
+      else if(index == 2) {
+        strcpy(arr, "obo");
+      }
+      else if(index == 3) {
+        strcpy(arr, "oco");
+      }
+      else if(index == 4) {
+	strcpy(arr,"ooc");
+      }
+      if(index2 == 0) {
+        strcpy(arr2, "ggg");
+      }
+      else if(index2 == 1) {
+        strcpy(arr2, "hhh");
+      }
+      else if(index2 == 2) {
+        strcpy(arr2, "aaa");
+      }
+      else if(index2 == 3) {
+        strcpy(arr2, "lll");
+      }
+      else if(index2 == 4) {
+        strcpy(arr2,"ttt");
+      }
+      int id = rand();
+      Node* newstudent;
+      cout<<"info abt random student, who you can add to the hash table";
+      cout<<"first name:" << endl;
+      for(int i = 0; i < 3; i++) {
+	cout<<arr[i];
+      }
+      cout<<endl;
+      cout<<"second name:" << endl;
+      for(int i = 0; i < 3; i++) {
+	cout<<arr2[i];
+      }
+      cout<<endl;
+      cout<< "id" << endl;
+      cout<< id;
+      cout<< "gpa: " << endl;
+      cout<<u;
     }
   }
   return 0;
