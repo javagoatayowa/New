@@ -45,18 +45,21 @@ int main() {
       head->id = id;
       head->gpa = gpa;
       head->next = NULL;
+      //cout<<hashtable[num]->firstname << endl;
       //cout<<head->gpa;
+      //cout<<head->firstname<<endl;
       if(hashtable[num] == NULL) {
 	 hashtable[num] = head;
 	 cout<<"done" << endl;
-         cout<<hashtable[num]->firstname << endl;
+         //cout<<hashtable[num]->firstname << endl;
       }
       else {
-	cout<<"collision" << endl;
+	//cout<<hashtable[num]->firstname << endl;
+	//cout<<"collision" << endl;
 	collisioncount++;
-	cout<<collisioncount;
+	//cout<<collisioncount;
 	Node* temp = hashtable[num];
-	cout<<hashtable[num]->firstname;
+	//	cout<<hashtable[num]->firstname;
 	while(temp != NULL) {
 	  if(temp->next == NULL) {
 	    temp->next = head;
@@ -88,6 +91,8 @@ int main() {
 	}
       }
       */
+      //delete[] firstname2;
+      //      delete[] secondname2;
     }
     else if(strcmp(input,"QUIT") == 0) {
       a = 1;
@@ -116,8 +121,8 @@ int main() {
 	      cout<< temp->gpa << endl;
 	      temp = temp->next;
 	    }
-	    cout<<temp->firstname << endl;
-	    cout<<temp->secondname << endl;
+	    //   cout<<temp->firstname << endl;
+	    //	    cout<<temp->secondname << endl;
 	  }
         }
       }
@@ -128,7 +133,93 @@ int main() {
       cin>>idin;
       if(collisioncount > 3) {
 	for(int i = 0; i < 302; i++) {
-	  Node* temp = hashtable2[i];
+	  if(hashtable2[i] != NULL) {
+	    Node* temp = hashtable2[i];
+	    Node* aftertemp = hashtable2[i]->next;
+	    while(aftertemp != NULL) {
+	      if(aftertemp->id == idin) {
+		temp->next = aftertemp->next;
+		break;
+	      }
+	      aftertemp = aftertemp->next;
+	      temp = temp->next;
+	    }
+	  }
+	  for(int i = 0; i < 302; i++) {
+	    Node* temp = hashtable2[i];
+	    while(temp != NULL) {
+	      cout<<temp->gpa << endl;
+	    }
+	  }
+	}
+      }
+      else {
+	 for(int i = 0; i < 151; i++) {
+	   if(hashtable[i] != NULL) {
+	     // cout<<hashtable[i]->id;
+	     Node* temp = hashtable[i];
+  	     Node* aftertemp = hashtable[i]->next;
+	     //cout<<aftertemp->id;
+	     while(aftertemp != NULL) {
+	       cout<<aftertemp->id;
+	       if(aftertemp->id == idin) {
+		 temp->next = aftertemp->next;
+	         break;
+	       }
+
+	     aftertemp = aftertemp->next;
+	     temp = temp->next;
+	     }
+	   }
+
+	 }
+
+	/*
+	for(int i = 0; i < 151; i++) {
+	  
+	  Node* temp = hashtable[i];
+	     Node* aftertemp = hashtable[i]->next;
+	     while(aftertemp != NULL) {
+	       if(aftertemp->id == idin) {
+		 temp->next = aftertemp->next;
+		 break;
+	       }
+	       aftertemp = aftertemp->next;
+	       temp = temp->next;
+	     }
+	   }
+	   for(int i = 0; i < 151; i++) {
+	     Node* temp = hashtable[i];
+	     while(temp != NULL) {
+	       cout<<temp->gpa << endl;
+	     }
+	   }
+	   
+        }
+	    */
+	/*
+	 for(int i = 0; i < 151; i++) {
+	   Node* temp = hashtable[i];
+	   Node* aftertemp = hashtable[i]->next;
+	   while(aftertemp != NULL) {
+	     if(aftertemp->id == idin) {
+	       temp->next = aftertemp->next;
+	       break;
+	     }
+	     aftertemp = aftertemp->next;
+	     temp = temp->next;
+	   }
+	 }
+	 for(int i = 0; i < 151; i++) {
+	   Node* temp = hashtable[i];
+	   while(temp != NULL) {
+	     cout<<temp->gpa << endl;
+	   }
+	 }
+	*/
+      }
+       /*
+      Node* temp = hashtable2[i];
 	  Node* aftertemp = hashtable2[i]->next;
 	  while(aftertemp != NULL) {
 	    if(aftertemp->id == idin) {
@@ -167,7 +258,9 @@ int main() {
         }
 
       }
+       */
     }
   }
   return 0;
 }
+
