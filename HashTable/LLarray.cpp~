@@ -1,0 +1,74 @@
+#include <iostream>
+using namespace std;
+  
+// Structure of Linked Lists
+struct Node {
+    int data;
+    Node* next;
+};
+  
+// Driver Code
+int main()
+{
+    int size = 10;
+  
+    // Pointer To Pointer Array
+    Node** head;
+  
+    // Array of pointers to info struct
+    // of size
+    head = new Node*[size];
+  
+    // Initialize pointer array to NULL
+    for (int i = 0; i < size; ++i) {
+        *(head + i) = NULL;
+    }
+  
+    // Traverse the pointer array
+    for (int i = 0; i < size; ++i) {
+  
+        // To track last node of the list
+        Node* prev = NULL;
+  
+        // Randomly taking 4 nodes in each
+        // linked list
+        int s = 4;
+  
+        while (s--) {
+  
+            // Create a new node
+            Node* n = new Node;
+  
+            // Input the random data
+            n->data = i * s;
+            n->next = NULL;
+  
+            // If the node is first
+            if (*(head + i) == NULL) {
+                *(head + i) = n;
+            }
+            else {
+                prev->next = n;
+            }
+            prev = n;
+        }
+    }
+  
+    // Print the array of linked list
+    for (int i = 0; i < size; ++i) {
+        Node* temp = *(head + i);
+  
+        // Linked list number
+        cout << i << "-->\t";
+  
+        // Print the Linked List
+        while (temp != NULL) {
+            cout << temp->data << " ";
+            temp = temp->next;
+        }
+  
+        cout << '\n';
+    }
+  
+    return 0;
+}
