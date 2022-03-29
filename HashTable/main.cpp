@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <array>
+#include <iomanip>
 using namespace std;
 //My code for hash table implementation for student list, by Aneeq Chowdhury. I used https://stackoverflow.com/questions/64166806/c-any-way-to-initialize-srand-multiple-times
 
@@ -24,6 +25,7 @@ int main() {//main method
   int a = 0;
   int collisioncount = 0;
   while(a == 0) {
+    cout<<"Input your needs! ADD to add, QUIT to quit, PRINT to print, DELETE to delete, and Random to random."<<endl;
     char input[81];
     cin>>input;
     if(strcmp(input,"ADD") == 0) {// add function
@@ -31,6 +33,7 @@ int main() {//main method
       char secondname2[81];
       int id;
       double gpa;
+      cout<<"Give firstname, secondname, id, and gpa"<<endl;
       cin>>firstname2;
       cin>>secondname2;
       cin>>id;
@@ -276,13 +279,15 @@ int main() {//main method
       }
       cout<<u * 10;
       */
+      srand( (unsigned)time(NULL) ); 
+
       int index = rand() %5;
       int index2 = rand() %5;
       char arr[4];
       char arr2[4];
       //cout<<index;
       float u;
-      u = (float)rand()/5;
+      u = (float)(rand()%41)/10;
       //      cout<<u;
       if(index == 0) {
 	strcpy(arr, "bob");
@@ -330,7 +335,7 @@ int main() {//main method
       cout<< "id" << endl;
       cout<< id;
       cout<< "gpa: " << endl;
-      cout<<u;
+      cout<<setprecision(3) << u;
     }
   }
   return 0;
