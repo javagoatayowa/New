@@ -1,4 +1,4 @@
-#include <iostream>
+ #include <iostream>
 #include <cstring>
 #include <stdio.h>
 #include <math.h>
@@ -50,27 +50,27 @@ int main(){
        display(0,arr,0,count);
      }
      else if(strcmp(arr2,"FILE") == 0) {
-       cout<<"Input how many numbers you got, and then input them";
-       fstream myfile;
-       myfile.open("numbers.txt", ios::in);
-       //cin>>n3;
-       if(myfile.is_open()) {
-	 cout<<"File open";
-	 string n5;
-	 cin>>n5;
-	 cout<<n5;
-	 
-	 for(int j = 0; j < n3; j++) {
-	   string bruh;
-	   cin>>bruh;
-	   cout<<bruh;
-	   if(count < 100) {
-	     arr[count] = bruh;
-	   }
+       fstream myfile("numbers.txt");
+       string filename("input.txt");
+       int number;
+
+       ifstream input_file(filename);
+       if (!input_file.is_open()) {
+	 cerr << "Could not open the file - '"
+	      << filename << "'" << endl;
+       }
+       
+       while (input_file >> number) {
+	 if(count < 100) {
+	   arr[count] = number;
+	   count++;
 	 }
        }
+       cout << endl;
+       input_file.close();
+    //cin>>n3
+     }
 
-     } 
-  }
+  } 
 
 }
