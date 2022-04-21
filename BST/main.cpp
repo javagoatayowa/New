@@ -104,6 +104,9 @@ int main() {
         count++;
        //insert(head, num);
     }
+    else if(strcmp(arr, "FILE") == 0) {
+      
+    }
     else if(strcmp(arr,"PRINT") == 0) {
       //inorder_print(head);
       if (head != NULL)
