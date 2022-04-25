@@ -1,3 +1,4 @@
+//Code created by Aneeq Chowdhury due 4/24/2021. Im v sick Mr Galbraith, sry for not showing up in advance. This code is a binary search tree and it deletes and adds and all sorts of excitigng stuff! I used Karla fants notes, and Geekfs for geek print https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/, and I also learned from a Java website on how to delete from BST. https://www.java2novice.com/java-interview-programs/delete-node-binary-search-tree-bst/.
 #include <iostream>
 #include <cstring>
 #include <fstream>
@@ -7,6 +8,38 @@ struct BST {
   BST *left;
   BST *right;
 };
+int minValue(BST* node) {
+  if(node->left == NULL) {
+    return minValue(node->left);
+  }
+  return node->data;
+}
+
+BST* deleteBRUH(BST* root, int data) {
+  if(root == NULL) {
+    return root;
+  }
+  else if(data > root->data) {
+    root->right = deleteBRUH(root->right,data);
+  }
+  else {
+    if(root->left == NULL && root->right == NULL) {
+      return NULL;
+    }
+    else if(root->left == NULL) {
+      return root->right;
+    }
+    else if(root->right == NULL) {
+      return root->left;
+    }
+    else {
+      int min = minValue(root->right);
+      root->data = min;
+      root->right = deleteBRUH(root->right, min);
+    }
+  }
+  return root;
+}
 void print(BST *root, int space)
 {
     if (!root)
@@ -114,29 +147,13 @@ int main() {
       }
     }
     //cout<<head->data;
+    else if(strcmp(arr,"DELETE") == 0) {
+    cout<< "Watchu wana delete?" << endl;
+    int ee;
+    cin>> ee;
+    deleteBRUH(head, ee);
+  }
 
   }
-  /*
-  cout<<"Enter what you want to do "<<endl;
-  char arr[81];
-  cin>>arr;
-  int count = 0;
-  BST * head;
- 
-  if(strcmp(arr,"INPUT") == 0) {
-      int num;
-      cin >> num;
-      if(count == 0) {
-        head->data = num;
-	head->left = NULL;
-	head->right = NULL;
-      }
-      else {
-	insert(head,num);
-	cout<<head->left->data << endl;
-      }
-  
-    return 0;
-  */
   return 0;
 }
