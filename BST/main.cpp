@@ -1,83 +1,56 @@
 #include <iostream>
 #include <cstring>
-#define COUNT 10
+#include <fstream>
 using namespace std;
 struct BST {
   int data;
   BST *left;
   BST *right;
 };
-void print2DUtil(BST *root, int space)
+void print(BST *root, int space)
 {
-    // Base case
-    if (root == NULL)
+    if (!root)
         return;
  
-    // Increase distance between levels
-    space += COUNT;
+    space = space + 10;
  
-    // Process right child first
-    print2DUtil(root->right, space);
+    print(root->right, space);
  
-    // Print current node after space
-    // count
     cout<<endl;
-    for (int i = COUNT; i < space; i++)
-        cout<<" ";
+    for (int i = 10; i < space; ++i) {
+      cout << "  ";
+    }
     cout<<root->data<<"\n";
  
-    // Process left child
-    print2DUtil(root->left, space);
+    print(root->left, space);
 }
-void search2(BST *root, int space, bool  & bruh)
+void searchBRUH(BST *root, int data, bool & bruhmane)
 {
-    if (root == NULL)
+    if (root == NULL || bruhmane == true)
         return;
-
-    search2(root->right, space,bruh);
-    if(root->data == space) {
-      bruh = true;
-      //      root = NULL;
+    searchBRUH(root->right, data, bruhmane);
+    if(root->data == data, data, bruhmane) {
+      bruhmane = true;
     }
-    search2(root->left, space, bruh);
-}
-void searchBRUH(BST *root, int space, bool & bruh)
-{
-    // Pass initial space count as 0
-   search2(root, space, bruh);
+    searchBRUH(root->left, data, bruhmane);
+     if(root->data == data) {
+      bruhmane = true;
+    }
+
 }
 
-// Wrapper over print2DUtil()
-void print2D(BST *root)
-{
-    // Pass initial space count as 0
-    print2DUtil(root, 0);
-}
-
-void search(BST *  root, int data, bool & bruh) {
-  if (root) {
-    search(root->left, data, bruh);
-    search(root->right, data, bruh);
-  }
-  if(root->data == data) {
-    bruh = true;
-  }
-}
-void insert2(BST * & root, int & data) {
-  //  if(root->data ->d 
-}
-BST * insert(BST* & root, int & d) {
+BST * add(BST* & root, int & data) {
   if(root == NULL) {
     root = new BST;
-    root->data = d;
-    root->left = NULL;
+    root->data = data;
     root->right = NULL;
+    root->left = NULL;
   }
-  else if(root->data > d) {
-    root->left = insert(root->left,d);
+  else if(root->data < data) {
+    root->right = add(root->right,data);
     
   }
-  else root->right = insert(root->right,d);
+  else root->left = add(root->left,data);
   return root;
 }
 int main() {
@@ -99,18 +72,31 @@ int main() {
 	// head->right = NULL;
         //} 
     //else {
-        insert(head,num);
+        add(head,num);
 	  //          cout<<head->left->data << endl; 
         count++;
        //insert(head, num);
     }
     else if(strcmp(arr, "FILE") == 0) {
-      
+      cout<<"ENTER NUMS IN THE FILEEEEE";
+       fstream myfile("numbers.txt");
+       string filename("input.txt");
+       int number;
+       ifstream input_file(filename);
+       if (!input_file.is_open()) {
+	 cerr << "Could not open file L bozo + ratio + mad cuz bad" << endl;
+       }
+       
+       while (input_file >> number) {
+	 add(head,number);
+       }
+       cout << endl;
+       input_file.close();
     }
     else if(strcmp(arr,"PRINT") == 0) {
       //inorder_print(head);
       if (head != NULL)
-	print2D(head);
+	print(head,0);
     }
     else if(strcmp(arr,"SEARCH") == 0) {
       bool e = false;
