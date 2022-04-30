@@ -124,7 +124,7 @@ int main() {//main method
 	      cout<<temp->firstname << endl;
 	      cout<< temp->secondname<<endl;
 	      cout<< temp->id << endl;
-	      cout<< temp->gpa << endl;
+	      cout<< setprecision(3) << temp->gpa << endl;
 	      temp = temp->next;
 	    }
 	    //   cout<<temp->firstname << endl;
@@ -319,23 +319,73 @@ int main() {//main method
       else if(index2 == 4) {
         strcpy(arr2,"ttt");
       }
+      Node *randomstud = new Node();
+      randomstud->firstname = arr;
+      randomstud->secondname = arr2;
+      
       int id = rand();
-      Node* newstudent;
-      cout<<"info abt random student, who you can add to the hash table";
-      cout<<"first name:" << endl;
-      for(int i = 0; i < 3; i++) {
-	cout<<arr[i];
+      randomstud->id = id;
+      // cout<<"info abt random student, who you can add to the hash table";
+      //   cout<<"first name:" << endl;
+      //cout<<endl;
+      // cout<<"second name:" << endl;
+      // for(int i = 0; i < 3; i++) {
+      //	cout<<arr2[i];
+      //}
+      // cout<<endl;
+      //cout<< "id" << endl;
+      //cout<< id;
+      // cout<< "gpa: " << endl;
+      randomstud->gpa = u;
+      randomstud->next = NULL;
+      int num = 0;
+      int length = strlen(arr);
+
+      for (int i = 0; i < length; i++) {
+        num = num + arr[i];
       }
-      cout<<endl;
-      cout<<"second name:" << endl;
-      for(int i = 0; i < 3; i++) {
-	cout<<arr2[i];
+      num = num%100;
+      //cout<<hashtable[num]->firstname << endl;
+      //cout<<head->gpa;
+      //cout<<head->firstname<<endl;
+      if(hashtable[num] == NULL) {
+         hashtable[num] = randomstud;
+         cout<<"done" << endl;
+         //cout<<hashtable[num]->firstname << endl;
       }
-      cout<<endl;
-      cout<< "id" << endl;
-      cout<< id;
-      cout<< "gpa: " << endl;
-      cout<<setprecision(3) << u;
+      else {//if collision
+        //cout<<hashtable[num]->firstname << endl;
+        //cout<<"collision" << endl;
+        collisioncount++;
+        //cout<<collisioncount;
+        Node* temp = hashtable[num];
+        //      cout<<hashtable[num]->firstname;
+        while(temp != NULL) {
+          if(temp->next == NULL) {
+            temp->next = randomstud;
+            break;
+          }
+          temp = temp->next;
+          //cout<<hashtable[num]->firstname<<endl;
+          //  cout<<hashtable[num]->secondname<<endl;
+        }
+        //cout<<temp->firstname<<endl;
+        //cout<<hashtable[num]->firstname<<endl;
+        //      cout<<hashtable[num]->secondname<<endl;
+      }
+      Node* temp = hashtable[num];
+      while(temp != NULL) {
+        //cout<<temp->gpa;
+        temp = temp->next;
+      }
+      if(collisioncount > 3) {
+        //      cout<<collisioncount;
+        for(int i = 0; i < 151; i++) {
+          hashtable2[i*2] = hashtable[i];
+        }
+      }
+
+      //cout<<setprecision(3) << u;
     }
   }
   return 0;
