@@ -14,6 +14,7 @@ BST* minNode(BST* n) {
     temp = temp->left;
   return temp;
 }
+
 /*
 BST* deleteTing(BST* root, int data) {
   if(!root) {
@@ -35,12 +36,12 @@ BST* deleteTing(BST* root, int data) {
 BST* deleteNode(BST* root, int data, BST *& root2)
 {
     if(data == root2->data) {
-      if(root2-> left == NULL && root2-> right == NULL) {
-	root2 = NULL;
+      if(root2-> left != NULL && root2-> right == NULL) {
+	root2 = root2->left;
 	root = NULL;
       }
-      else if(root2->left != NULL && root2->right == NULL) {
-	root2 = root->left;
+      else if(root2->left == NULL && root2->right != NULL) {
+	root2 = root->right;
 	root = NULL;
       }
       else if(root2->left == NULL && root2->right == NULL) {
@@ -77,6 +78,7 @@ BST* deleteNode(BST* root, int data, BST *& root2)
     }
     return root;
 }
+/*
 BST* deleteBRUH(BST* root, int data) {
   if(root == NULL) {
     return root;
@@ -102,6 +104,7 @@ BST* deleteBRUH(BST* root, int data) {
   }
   return root;
 }
+*/
 void print(BST *root, int space)
 {
     if (!root)
