@@ -1,4 +1,4 @@
-//Code created by Aneeq Chowdhury due 4/24/2021. Im v sick Mr Galbraith, sry for not showing up in advance. This code is a binary search tree and it deletes and adds and all sorts of excitigng stuff! I used Karla fants notes, and Geekfs for geek print https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/, and I also learned from a Java website on how to delete from BST. https://www.java2novice.com/java-interview-programs/delete-node-binary-search-tree-bst/.
+//Code created by Aneeq Chowdhury due 4/24/2021. Im v sick Mr Galbraith, sry for not showing up in advance. This code is a binary search tree and it deletes and adds and all sorts of excitigng stuff! I used Karla fants notes, and Geekfs for geek print https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/, and I also learned from a Java website on how to delete from BST. https://www.java2novice.com/java-interview-programs/delete-node-binary-search-tree-bst/., using Geeks for geeks for delete https://www.geeksforgeeks.org/binary-search-tree-set-2-delete/ got help from nihal on how to delete the head
 #include <iostream>
 #include <cstring>
 #include <fstream>
@@ -8,13 +8,75 @@ struct BST {
   BST *left;
   BST *right;
 };
-int minValue(BST* node) {
-  if(node->left == NULL) {
-    return minValue(node->left);
-  }
-  return node->data;
+BST* minNode(BST* n) {
+  BST* temp = n;
+  while(temp && temp->left != NULL)
+    temp = temp->left;
+  return temp;
 }
+/*
+BST* deleteTing(BST* root, int data) {
+  if(!root) {
+    return; 
+  }
+  if(root->data < data)
+    deleteTing(root-right, data);
+  if (root->data > data)
+    deleteTing(root->left, data);
+  else 
+    if (root->left == NULL && root->right == NULL)
+      return NULL;
 
+    else if (root->right == NULL) 
+      return root->left;
+    if (root->
+}
+*/
+BST* deleteNode(BST* root, int data, BST *& root2)
+{
+    if(data == root2->data) {
+      if(root2-> left == NULL && root2-> right == NULL) {
+	root2 = NULL;
+	root = NULL;
+      }
+      else if(root2->left != NULL && root2->right == NULL) {
+	root2 = root->left;
+	root = NULL;
+      }
+      else if(root2->left == NULL && root2->right == NULL) {
+	root2 = NULL;
+	root = NULL;
+      }
+    }
+    if (!root) 
+        return root;
+    if (data > root->data)
+      root->right = deleteNode(root->right, data,root2);
+    
+    else if (data < root->data)
+      root->left= deleteNode(root->left, data,root2);
+    else {
+       if (root->left == NULL) {
+            BST* temp = root->right;
+            delete root;
+            return temp;
+        }
+        else if (root->left==NULL && root->right==NULL)
+            return NULL;
+      
+        else if (root->right == NULL) {
+            BST* temp = root->left;
+            delete root;
+            return temp;
+        }
+
+        BST* temp;
+	temp = minNode(root->right);
+        root->data = temp->data;
+        root->right = deleteNode(root->right, temp->data,root2);
+    }
+    return root;
+}
 BST* deleteBRUH(BST* root, int data) {
   if(root == NULL) {
     return root;
@@ -92,7 +154,7 @@ int main() {
   head = NULL;
 
   while(a == 0) {
-    cout<<"Enter what you want to do "<<endl;
+    cout<<"Enter what you want to do, INPUT to add, FILE to file, DELETE to delete, PRINT to print and SEARCH to search. "<<endl;
     char arr[81];
     cin>>arr;
     int count = 0;
@@ -151,7 +213,7 @@ int main() {
     cout<< "Watchu wana delete?" << endl;
     int ee;
     cin>> ee;
-    deleteBRUH(head, ee);
+    deleteNode(head, ee, head);
   }
 
   }
