@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstring>
-#include <fstream>//I used some help on the adding and understanding red black tree in general from https://algorithmtutor.com/Data-Structures/Tree/Red-Black-Trees/
+#include <fstream>//I used some help on the adding and understanding red black tree in general from https://algorithmtutor.com/Data-Structures/Tree/Red-Black-Trees/, and I also used print method from my BST code
 using namespace std;
 struct Node {
 	int data;
