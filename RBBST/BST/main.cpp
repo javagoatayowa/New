@@ -236,7 +236,7 @@ void print(BST *root, int space)
     for (int i = 10; i < space; ++i) {
       cout << "  ";
     }
-    cout<<root->data<<"\n";
+    cout<<root->data << " " << root->color <<"\n";
  
     print(root->left, space);
 }
@@ -258,9 +258,13 @@ void searchBRUH(BST *root, int data, bool & bruhmane)
 BST * add(BST* & root, int & data) {
   if(root == NULL) {
     root = new BST;
+    right = new BST;
+    right->color = 'b';
+    left = new BST;
     root->data = data;
-    root->right = NULL;
-    root->left = NULL;
+    root->right =right;
+    root->left = left;
+    root->color = 'b';
   }
   else if(root->data < data) {
     root->right = add(root->right,data);
@@ -269,11 +273,55 @@ BST * add(BST* & root, int & data) {
   else root->left = add(root->left,data);
   return root;
 }
+class rbt {
+private:
+  BST* root;
+  BST* TNULL;
+  void nullNode(BST* bruh, BST* parent) {
+    bruh->data = 0;
+    bruh->parent = parent;
+    bruh->left = TNULL;
+    bruh->right = TNULL;
+    bruh->color = 'E';
+  }
+public:
+  rbt() {
+    TNULL = new BST*;
+    TNULL->color = 'n';
+    TNULL->left = NULL;
+    TNULL->right = NULL;
+    root = TNULL;
+  }
+  void insert(int data) {
+    BST* node = new BST*;
+    node->parent = NULL;
+    node->data = data;
+    node->color = 'r';
+    BST* z = NULL;
+    BST* r = this->root;
+    while(r!= TNULL) {
+      z = r;
+      if(node->data > r->data) {
+	r = r->right;
+      }
+      else {
+	r = r->left;
+      }
+    }
+    node->parent = z;
+    if(z == NULL) {
+      
+    }
+  }
+  BST* getRoot() {
+    return this->root;
+  }
+};
 int main() {
   int a = 0;
   BST * head;
-  head = NULL;
-
+  rbt bst;
+  head = bst.getRoot();
   while(a == 0) {
     cout<<"Enter what you want to do, INPUT to add, FILE to file, DELETE to delete, PRINT to print and SEARCH to search. "<<endl;
     char arr[81];
