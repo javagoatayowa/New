@@ -257,14 +257,13 @@ void searchBRUH(BST *root, int data, bool & bruhmane)
 
 BST * add(BST* & root, int & data) {
   if(root == NULL) {
-    root = new BST;
-    right = new BST;
-    right->color = 'b';
-    left = new BST;
+    BST* right;
+    right->color = 'r';
+    BST* left;
     root->data = data;
     root->right =right;
     root->left = left;
-    root->color = 'b';
+    root->color = 'r';
   }
   else if(root->data < data) {
     root->right = add(root->right,data);
@@ -282,18 +281,18 @@ private:
     bruh->parent = parent;
     bruh->left = TNULL;
     bruh->right = TNULL;
-    bruh->color = 'E';
+    bruh->color = 'r';
   }
 public:
   rbt() {
-    TNULL = new BST*;
-    TNULL->color = 'n';
+    BST* TNULL;
+    TNULL->color = 'b';
     TNULL->left = NULL;
     TNULL->right = NULL;
     root = TNULL;
   }
   void insert(int data) {
-    BST* node = new BST*;
+    BST* node;
     node->parent = NULL;
     node->data = data;
     node->color = 'r';
@@ -310,7 +309,17 @@ public:
     }
     node->parent = z;
     if(z == NULL) {
-      
+      root = node;
+    }
+    else if(node->data < z->data) {
+      z->left = node;
+    }
+    else {
+      z->right = node; 
+    }
+
+    if(node->parent == NULL) {
+      node->color = 'b';
     }
   }
   BST* getRoot() {
@@ -319,9 +328,10 @@ public:
 };
 int main() {
   int a = 0;
-  BST * head;
   rbt bst;
-  head = bst.getRoot();
+  bst.insert(5);
+  bst.insert(10);
+  BST * head = bst.getRoot();
   while(a == 0) {
     cout<<"Enter what you want to do, INPUT to add, FILE to file, DELETE to delete, PRINT to print and SEARCH to search. "<<endl;
     char arr[81];
@@ -336,7 +346,7 @@ int main() {
 	// head->right = NULL;
         //} 
     //else {
-        add(head,num);
+        bst.insert(num);
 	  //          cout<<head->left->data << endl; 
         count++;
        //insert(head, num);
@@ -379,12 +389,12 @@ int main() {
     }
     //cout<<head->data;
     else if(strcmp(arr,"DELETE") == 0) {
-    cout<< "Watchu wana delete?" << endl;
-    int ee;
-    cin>> ee;
-    deleteNode(head, ee, head);
-  }
-
+      cout<< "Watchu wana delete?" << endl;
+      int ee;
+      cin>> ee;
+      deleteNode(head, ee, head);
+    }
+    
   }
   return 0;
 }
