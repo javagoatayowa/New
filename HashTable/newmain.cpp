@@ -22,6 +22,9 @@ int main() {
   for (int i = 0; i< 151; i++) {
     hashtable[i] = NULL;//making whole table null;
   }
+  for(int j = 0; j < 302; j++) {
+    hashtable2[j] = NULL;
+  }
   int a = 0;
   bool collidnew = false;
   while(a == 0) {
@@ -29,7 +32,7 @@ int main() {
 o delete, and Random to random."<<endl;
     char input[81];
     cin>>input;
-    if(strcmp(input,"ADD") == 0) {
+    if(strcmp(input,"ADD") == 0) {//add
       char *firstname = new char[81];
       char * secondname = new char[81];
       int id;
@@ -73,7 +76,7 @@ o delete, and Random to random."<<endl;
 	    //lcount++;
 	  }
 	}
-	if(collidnew == false && count > 3) {
+	if(collidnew == false && count > 3) {// if there are morethan 3 in a chain and it hasnt been rehashed. 
 	  collidnew = true;
 	  count = 0;
 	  for(int j = 0; j < 151; j++) {
@@ -101,7 +104,7 @@ o delete, and Random to random."<<endl;
     else if(strcmp(input,"QUIT") == 0) {
       a = 1;
     }
-    else if(strcmp(input,"PRINT") == 0) {
+    else if(strcmp(input,"PRINT") == 0) {//print
       if(collidnew == false) {
 	for(int i = 0; i < 151; i++) {
 	  if(hashtable[i] != NULL) {
@@ -120,7 +123,7 @@ o delete, and Random to random."<<endl;
 	}
       }
       else {
-        for(int i = 0; i < 302; i++) {
+        for(int i = 0; i < 302; i++) {//if its bigger table
           if(hashtable2[i] != NULL) {
             Node* it = NULL;
             it = hashtable2[i];
@@ -138,7 +141,7 @@ o delete, and Random to random."<<endl;
       }
 
     }
-    else if(strcmp(input,"DELETE") == 0) {
+    else if(strcmp(input,"DELETE") == 0) {//delete
       int idtodelete;
       cout<<"What uw ant to delete?" << endl;
       cin>>idtodelete;
@@ -194,18 +197,6 @@ o delete, and Random to random."<<endl;
     }
     else if(strcmp(input,"Random")== 0 ) {
       srand( (unsigned)time(NULL) );//random student generator
-      //     int index = rand() % 5;
-      //      cout<<index;
-      //      int index2 = rand() % 5;
-      //cout << index2;
-      /*
-      double u;
-      for (int i = 0; i < 1; i++)
-      {
-         u =  (float) rand()/5;
-      }
-      cout<<u * 10;
-      */
       int bruhmane;
       cout<<"how many nums u want?" << endl;
       cin>> bruhmane;
