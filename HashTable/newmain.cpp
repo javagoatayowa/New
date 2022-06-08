@@ -17,11 +17,8 @@ struct Node {
 };//node struct
 
 int main() {
-  srand(time(NULL));
-  Node** hashtable;
-  hashtable = new Node* [151];
-  Node** hashtable2;
-  hashtable2 = new Node*[302];
+  Node** hashtable = new Node* [151];
+  Node** hashtable2 = new Node*[302];
   for (int i = 0; i< 151; i++) {
     hashtable[i] = NULL;//making whole table null;
   }
@@ -33,8 +30,8 @@ o delete, and Random to random."<<endl;
     char input[81];
     cin>>input;
     if(strcmp(input,"ADD") == 0) {
-      char firstname[81];
-      char secondname[81];
+      char *firstname = new char[81];
+      char * secondname = new char[81];
       int id;
       double gpa;
       cout<<"Give firstname, secondname, id and gpa in this order!"<<endl;
@@ -119,6 +116,201 @@ o delete, and Random to random."<<endl;
 	      //	      cout<<"next : " << endl;
 	    }
 	    //cout<<"thats one node" << endl;
+	  }
+	}
+      }
+      else {
+        for(int i = 0; i < 302; i++) {
+          if(hashtable2[i] != NULL) {
+            Node* it = NULL;
+            it = hashtable2[i];
+            while(it != NULL) {
+              cout<< "First name : " << it->firstname << endl;
+              cout<<"Second name : " << it->secondname << endl;
+              cout<< "id : " << it->id<<endl;
+              cout<< "gpa : " <<it->gpa << endl;
+              it = it->next;
+              //              cout<<"next : " << endl;
+            }
+            //cout<<"thats one node" << endl;
+          }
+        }
+      }
+
+    }
+    else if(strcmp(input,"DELETE") == 0) {
+      int idtodelete;
+      cout<<"What uw ant to delete?" << endl;
+      cin>>idtodelete;
+      if(collidnew == false) {
+	for(int i = 0; i < 151; i++) {
+	  if(hashtable[i] != NULL) {
+	    if(hashtable[i]->id == idtodelete) {
+	      Node* temp = hashtable[i];
+	      hashtable[i] = hashtable[i]->next;
+	      delete temp;
+	      break;
+           }
+	    else {
+	      Node* it = hashtable[i];
+	      while(it->next != NULL) {
+		if(it->next->id == idtodelete) {
+		  Node* temp = it->next;
+		  it->next = it->next->next;
+		  delete temp;
+		  break;
+		}
+		it = it->next;
+	      }
+	    }
+	  }
+	}
+      }
+      else {
+        for(int i = 0; i < 302; i++) {
+          if(hashtable[i] != NULL) {
+            if(hashtable[i]->id == idtodelete) {
+              Node* temp = hashtable[i];
+              hashtable[i] = hashtable[i]->next;
+              delete temp;
+              break;
+           }
+            else {
+              Node* it = hashtable[i];
+              while(it->next != NULL) {
+                if(it->next->id == idtodelete) {
+                  Node* temp = it->next;
+                  it->next = it->next->next;
+                  delete temp;
+                  break;
+                }
+                it = it->next;
+              }
+            }
+          }
+        }
+      }
+
+    }
+    else if(strcmp(input,"Random")== 0 ) {
+      srand( (unsigned)time(NULL) );//random student generator
+      //     int index = rand() % 5;
+      //      cout<<index;
+      //      int index2 = rand() % 5;
+      //cout << index2;
+      /*
+      double u;
+      for (int i = 0; i < 1; i++)
+      {
+         u =  (float) rand()/5;
+      }
+      cout<<u * 10;
+      */
+      int bruhmane;
+      cout<<"how many nums u want?" << endl;
+      cin>> bruhmane;
+      for(int j= 0; j < bruhmane; j++) {
+	//	srand( (unsigned)time(NULL) );
+	int ind = rand() %5;
+	int ind2 = rand() %5;
+	char * arr  = new char[4];
+	char * arr2 = new char[4];
+	//cout<<index;
+	float u;
+	u = (float)(rand()%41)/10;
+	//      cout<<u;
+	if(ind == 0) {
+	  strcpy(arr, "bob");
+	}
+	else if(ind == 1) {
+	  strcpy(arr, "oob");
+	}
+	else if(ind == 2) {
+	  strcpy(arr, "obo");
+	}
+	else if(ind == 3) {
+	  strcpy(arr, "oco");
+	}
+	else if(ind == 4) {
+	  strcpy(arr,"ooc");
+	}
+	if(ind2 == 0) {
+	  strcpy(arr2, "ggg");
+	}
+	else if(ind2 == 1) {
+	  strcpy(arr2, "hhh");
+	}
+	else if(ind2 == 2) {
+	  strcpy(arr2, "aaa");
+	}
+	else if(ind2 == 3) {
+	  strcpy(arr2, "lll");
+	}
+	else if(ind2 == 4) {
+	  strcpy(arr2,"ttt");
+	}
+	Node *randomstud = new Node();
+	randomstud->firstname = arr;
+	randomstud->secondname = arr2;
+	int id = rand();
+	randomstud->id = id;
+	// cout<<"info abt random student, who you can add to the hash table";
+      //   cout<<"first name:" << endl;
+      //cout<<endl;
+      // cout<<"second name:" << endl;
+      // for(int i = 0; i < 3; i++) {
+      //        cout<<arr2[i];
+      //}
+      // cout<<endl;
+      //cout<< "id" << endl;
+      //cout<< id;
+      // cout<< "gpa: " << endl;
+	randomstud->gpa = u;
+	randomstud->next = NULL;
+	int num = 0;
+	int length = strlen(arr);
+	
+	for (int i = 0; i < length; i++) {
+	  num = num + arr[i];
+	}
+	num = num%100;
+	//cout<<hashtable[num]->firstname << endl;
+	//cout<<head->gpa;
+	//cout<<head->firstname<<endl;
+	if(hashtable[num] == NULL) {
+	  hashtable[num] = randomstud;
+	  cout<<"done" << endl;
+	  //cout<<hashtable[num]->firstname << endl;
+	}
+	else {//if collision
+	  //cout<<hashtable[num]->firstname << endl;
+	  //cout<<"collision" << endl;
+	  // collisioncount++;
+	  //cout<<collisioncount;
+	  Node* temp = hashtable[num];
+	  //      cout<<hashtable[num]->firstname;
+	  while(temp != NULL) {
+	    if(temp->next == NULL) {
+	      temp->next = randomstud;
+	      break;
+	    }
+	    temp = temp->next;
+          //cout<<hashtable[num]->firstname<<endl;
+          //  cout<<hashtable[num]->secondname<<endl;
+	  }
+	  //cout<<temp->firstname<<endl;
+	  //cout<<hashtable[num]->firstname<<endl;
+	  //      cout<<hashtable[num]->secondname<<endl;
+	}
+	Node* temp = hashtable[num];
+	while(temp != NULL) {
+	  //cout<<temp->gpa;
+	  temp = temp->next;
+	}
+	if(collidnew == false) {
+	  //      cout<<collisioncount;
+	  for(int i = 0; i < 151; i++) {
+	    hashtable2[i*2] = hashtable[i];
 	  }
 	}
       }

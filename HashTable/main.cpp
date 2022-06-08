@@ -23,6 +23,9 @@ int main() {//main method
   for (int i = 0; i< 151; i++) {
     hashtable[i] = NULL;//making whole table null;
   }
+  for(int j = 0; j < 302; j++) {
+    hashtable[j] = NULL;
+  }
   int a = 0;
   int collisioncount = 0;
   while(a == 0) {
@@ -135,96 +138,27 @@ int main() {//main method
       cin>>id2;
       if(collisioncount <= 3) {
 	for(int i = 0; i < 151; i++) {
-	  if(hashtable[i]->id == id2) {
-	    
+	  if(hashtable[i]!= NULL && hashtable[i]->id == id2) {
+	    Node* temp - hashtable[i];
+	    hashtable[i] = hashtable[i] ->next;
+	    delete temp;
 	  }
-	}
-      }
-	/*
-	for(int i = 0; i < 151; i++) {
-	  
-	  Node* temp = hashtable[i];
-	     Node* aftertemp = hashtable[i]->next;
-	     while(aftertemp != NULL) {
-	       if(aftertemp->id == idin) {
-		 temp->next = aftertemp->next;
-		 break;
-	       }
-	       aftertemp = aftertemp->next;
-	       temp = temp->next;
-	     }
-	   }
-	   for(int i = 0; i < 151; i++) {
-	     Node* temp = hashtable[i];
-	     while(temp != NULL) {
-	       cout<<temp->gpa << endl;
-	     }
-	   }
-	   
-        }
-	    */
-	/*
-	 for(int i = 0; i < 151; i++) {
-	   Node* temp = hashtable[i];
-	   Node* aftertemp = hashtable[i]->next;
-	   while(aftertemp != NULL) {
-	     if(aftertemp->id == idin) {
-	       temp->next = aftertemp->next;
-	       break;
-	     }
-	     aftertemp = aftertemp->next;
-	     temp = temp->next;
-	   }
-	 }
-	 for(int i = 0; i < 151; i++) {
-	   Node* temp = hashtable[i];
-	   while(temp != NULL) {
-	     cout<<temp->gpa << endl;
-	   }
-	 }
-	*/
-    }
-       /*
-      Node* temp = hashtable2[i];
-	  Node* aftertemp = hashtable2[i]->next;
-	  while(aftertemp != NULL) {
-	    if(aftertemp->id == idin) {
-	      temp->next = aftertemp->next;
-	      break;
+	  else {
+	    Node* it = hashtable[i];
+	    while(it ->next != NULL) {
+	      if(it->next->id == idtodelete) {
+		Node* temp = it->next;
+		it->next = it->next->next;
+		delete temp;
+		break;
+	      }
+	      it = it->next;
 	    }
-	    aftertemp = aftertemp->next;
-	    temp = temp->next;
-	  }
-	}
-	for(int i = 0; i < 302; i++) {
-	  Node* temp = hashtable2[i];
-	  while(temp != NULL) {
-	    cout<<temp->gpa << endl;
 	  }
 	}
       }
-      else {
-	for(int i = 0; i < 151; i++) {
-          Node* temp = hashtable[i];
-          Node* aftertemp = hashtable[i]->next;
-          while(aftertemp != NULL) {
-            if(aftertemp->id == idin) {
-              temp->next = aftertemp->next;
-              break;
-            }
-            aftertemp = aftertemp->next;
-            temp = temp->next;
-          }
-        }
-        for(int i = 0; i < 151; i++) {
-          Node* temp = hashtable[i];
-          while(temp != NULL) {
-            cout<<temp->gpa << endl;
-          }
-        }
-
-      }
-       */
+      
+    }
     else if(strcmp(input,"Random")== 0 ) {//random student generator
       //     int index = rand() % 5;
       //      cout<<index;
