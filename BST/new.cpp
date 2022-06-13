@@ -2,7 +2,7 @@
 #include <cstring>
 #include <fstream>
 using namespace std;
-
+//I used help from a pseudocode document for Add and fix add and left rotate and right rotate https://www.andrew.cmu.edu/user/mm6/95-771/examples/RedBlackTreeProject/dist/javadoc/redblacktreeproject/RedBlackTree.html#levelOrderTraversal() but I used C++ code to adjust a few things and the c++ code was very similar to that. that c++ code was: https://www.programiz.com/dsa/red-black-tree#:~:text=Red%2DBlack%20tree%20is%20a,colored%2C%20either%20red%20or%20black. I also used some syntax and pseocodoe from that website for delete and delete fix. 
 struct Node {
   int data;
   Node* left;
