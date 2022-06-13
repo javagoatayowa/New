@@ -21,6 +21,7 @@ private:
     node->right = NULL;
     node->color = 'b';
   }
+  
   void InsertFix(Node*z) {
     while(z->parent->color == 'r') {
       if(z->parent == z->parent->parent->left) {
@@ -66,6 +67,109 @@ private:
     }
     root->color = 'b';
   }
+  
+  void transplant(Node* x, Node* y) {
+    if(x->parent == NULL) {
+      root = y;
+    }
+    else {
+      if(x == x->parent->left) {
+	x->parent->left = y;
+      }
+      else {
+	x->parent->right = y;
+      }
+    }
+    y->parent = x->parent;
+  }
+  void dfix(Node* temp) {
+    Node * x;
+    while(temp->color == 'b' && temp != root) {
+      if(temp == temp->parent->left) {
+	x = temp->parent->right;
+	if(x->color == 'r') {
+	  temp->parent->right->color = 'b';
+	  temp->parent->color = 'r';
+	  leftRotate(temp->parent);
+	  x = temp->parent->right;
+	}
+	if(x->right->color == 'b' && x->left->color == 'b') {
+	  x->color = 'r';
+	  temp = temp->parent;
+	}
+	else  {
+	  if(x->right->color == 'b') {
+	    x->left->color = 'b';
+	    x->color = 'r';
+	    rightRotate(x);
+	    x = temp->parent->right;
+	  }
+	  x->color = temp->parent->color;
+	  temp->parent->color = 'b';
+	  x->right->color = 'b';
+	  leftRotate(temp->parent);
+	  temp = root;
+	}
+      } else {
+	x = temp->parent->left;
+	if(x -> color == 'r') {
+	  x->color = 'b';
+	  temp->parent->color = 'r';
+	  rightRotate(temp->parent);
+	  x = temp->parent->left;
+	}
+        if(x->right->color == 'b') {
+	  x->color = 'r';
+	  temp = temp->parent;
+	}
+	else {
+	  if(x->left->color == 'b') {
+	    x->right->color = 'b';
+	    x->color = 'r';
+	    leftRotate(x);
+	    x = temp->parent->left;
+	  }
+	  x->color = temp->parent->color;
+	  temp->parent->color =  'b';
+	  x->left->color = 'b';
+	  rightRotate(temp->parent);
+	  temp = root;
+	}
+      }
+    }
+    temp = root;
+  }
+  void remove2(Node* todelete, int data) {
+    Node* bru = TNULL;// this part finds the node to delete itself
+    Node* u,v;
+    while(node != TNULL) {
+      if(node->data = data) {
+	bru = node;
+      }
+      if(node->data <= data) {
+	node = node->right;
+      }
+      else {
+	node = node->left;
+      }
+    }
+    if(bru == TNULL) {//wasnt found
+      cout<<"You are deleting something nonexistent?" << endl;
+      return;
+    }
+    u = bru;
+    char col = u->color;
+    if(bru->left == TNULL) {
+      v = bru->right;
+      transplant(bru, bru->right);
+    }
+    else if(bru->right == TNULL) {
+      v = bru->left;
+      transplant(bru,bru->left);
+    }
+    else {
+    }
+  }
 public:
   RedBlackTree() {
     TNULL = new Node;
@@ -73,6 +177,12 @@ public:
     TNULL->left = NULL;
     TNULL->right = NULL;
     root = TNULL;
+  }
+  Node* minimum(Node* node) {
+    while(node->left != TNULL) {
+      node = node->left;
+    }
+    return node;
   }
   void leftRotate(Node* x) {
     Node* y = x->right;
@@ -111,7 +221,10 @@ public:
       }
       y->right = x;
       x->parent = y;
-    }
+  }
+  void remove(int data) {
+    remove2(this->root, data);
+  }
 
   void insert(int n) {
     Node* node = new Node;
