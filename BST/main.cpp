@@ -11,6 +11,39 @@ struct BST {
   BST *right;
   char color;
 };
+
+BST* uncle(BST* bruh) {
+  if(bruh->parent == NULL or bruh->parent->parent == NULL) {
+    return NULL;
+  }
+  if(bruh == bruh->parent->left) {
+    return bruh->parent->parent->right;
+  }
+  else
+    return bruh->parent->parent->left;
+}
+BST* sibling(BST* bruh) {
+  if(bruh->parent == NULL) {
+    return NULL;
+  }
+  if(bruh == bruh->parent->left) {
+    return brbuh->parent->right;
+  }
+  return bruh->parent->left;
+}
+void Down(BST* bruh, BST* n) {
+  if(bruh->parent != NULL) {
+    if(bruh = bruh->parent->left) {
+      bruh ->parent = n;
+    }
+    else {
+      bruh->parent->right = n;
+    }
+  }
+  n->parent = bruh->parent;
+  bruh->parent = n;
+}
+
 BST* minNode(BST* n) {
   BST* temp = n;
   while(temp && temp->left != NULL)
@@ -36,6 +69,44 @@ BST* deleteTing(BST* root, int data) {
     if (root->
 }
 */
+
+BST* LeftRotate(BST *& root, BST* node) {
+  BST* y = node->right;
+  y->left = x->right;
+  if(y != NULL) {
+    x  = y->left->parent;
+  }
+  x->parent = y->parent;
+  if(x->parent == NULL) {
+    y = root;
+  }
+  else if(x == x->parent->left) {
+    y = x->parent->left;
+  }
+}
+
+/*
+BST* checkAdd(BST* &root, BST* temp) {
+  BST* p = NULL;
+  BST* u = NULL;
+  BST* gp = NULL;
+
+  if(temp->parent != NULL) {
+    p = temp->parent;
+    if(p->parent != NULL) {
+      gp = p->parent;
+      if(gp ->left == p) {
+	u = gp->right;
+      }
+      else if(gp->right == p) {
+	u = gp->left;
+      }
+    }
+  }
+}
+*/
+BST* leftRotate() {
+}
 BST* deleteNode(BST* root, int data, BST *& root2)
 {
     if(data == root2->data) {
