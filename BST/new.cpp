@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstring>
-
+#include <fstream>
 using namespace std;
 
 struct Node {
@@ -139,11 +139,12 @@ private:
     }
     temp = root;
   }
-  void remove2(Node* todelete, int data) {
+  void remove2(Node* node, int data) {
     Node* bru = TNULL;// this part finds the node to delete itself
-    Node* u,v;
+    Node* u = new Node;
+    Node* v = new Node;
     while(node != TNULL) {
-      if(node->data = data) {
+      if(node->data == data) {
 	bru = node;
       }
       if(node->data <= data) {
@@ -157,18 +158,37 @@ private:
       cout<<"You are deleting something nonexistent?" << endl;
       return;
     }
-    u = bru;
+    v = bru;
     char col = u->color;
     if(bru->left == TNULL) {
-      v = bru->right;
+      u = bru->right;
       transplant(bru, bru->right);
     }
     else if(bru->right == TNULL) {
-      v = bru->left;
+      u = bru->left;
       transplant(bru,bru->left);
     }
     else {
+      v = minimum(bru->right);
+      col = v->color;
+      u = v->right;
+      if(v->parent == bru) {
+	u->parent = v;
+      }
+      else {
+	transplant(v, v->right);
+	v->right = bru->right;
+	v->right->parent = v;
+      }
+      transplant(bru, v);
+      v->left = bru->left;
+      v->left->parent  = v;
+      v->color = bru->color;
     }
+    delete bru;
+   if(col == 'b') {
+      dfix(u);
+   }
   }
 public:
   RedBlackTree() {
@@ -294,6 +314,20 @@ public:
 
     print(root->left, space);
    }
+  void searchBRUH(Node *root, int data, bool & bruhmane)
+{
+    if (root == NULL || bruhmane == true)
+        return;
+    searchBRUH(root->right, data, bruhmane);
+    if(root->data == data, data, bruhmane) {
+      bruhmane = true;
+    }
+    searchBRUH(root->left, data, bruhmane);
+     if(root->data == data) {
+      bruhmane = true;
+    }
+
+}
 
 };
 
@@ -313,6 +347,45 @@ int main() {
     else if(strcmp(input, "PRINT") == 0) {
       rbt.print(rbt.getRoot(),0);
     }
+    else if (strcmp(input, "DELETE") == 0) {
+      cout<<"What do you want to delete? " << endl;
+      int n;
+      cin>>n;
+      rbt.remove(n);
+    }
+    else if(strcmp(input, "FILE") == 0) {
+      cout<<"ENTER NUMS IN THE FILEEEEE";
+       fstream myfile("numbers.txt");
+       string filename("input.txt");
+       int number;
+       ifstream input_file(filename);
+       if (!input_file.is_open()) {
+         cerr << "Could not open file L bozo + ratio + mad cuz bad" << endl;
+       }
+
+       while (input_file >> number) {
+         rbt.insert(number);
+       }
+       cout << endl;
+       input_file.close();
+      }
+    else if(strcmp(input, "SEARCH" ) == 0) {
+      bool bruhmane = false;
+      cout<<"enter da num u wanna find" << endl;
+      int n;
+      cin>>n;
+      rbt.searchBRUH(rbt.getRoot(), n, bruhmane);
+      if(bruhmane == true) {
+	cout<<"Number is in tree" << endl;
+      }
+      else {
+	cout<<"Number isnt in tree" << endl;
+      }
+    }
+    else if(strcmp(input, "QUIT" ) == 0) {
+      tf = true;
+    }
+
   }
   return 0;
 }

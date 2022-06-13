@@ -250,7 +250,7 @@ int main() {
        //insert(head, num);
     }
     else if(strcmp(arr, "FILE") == 0) {
-      cout<<"ENTER NUMS IN THE FILEEEEE";
+      cout<<"ENTER NUMS IN THE FILEEEEE" << endl;
        fstream myfile("numbers.txt");
        string filename("input.txt");
        int number;
