@@ -43,7 +43,7 @@ int main() {
   char arr[81];
   bool bruh = false;
   while(bruh == false) {
-    cout<<"What do you want to do? ADDVERTEX? ADDEDGE? REMOVEV? REMOVEE? SHORT?" << endl; 
+    cout<<"What do you want to do? ADDVERTEX? ADDEDGE? REMOVEV? REMOVEE? SHORT? vertexes are all integers btw" << endl; 
     cin>>arr;//comands
     if(strcmp(arr,"ADDVERTEX")== 0) {
 	vector<int> newvect;
@@ -52,6 +52,7 @@ int main() {
 	cin>>n;
 	newvect.push_back(n);
 	//adj.push_back(newvect);
+	//newvect.push_back(0);
 	for(int l = 0; l < adj.size(); l++) {
 	  newvect.push_back(0);
 	}
@@ -90,8 +91,8 @@ int main() {
 	  }
 	}
 	if(bru[0] == n) {
-	  for(int z= 1; z < bru.size(); z++) {
-	    if(z-1 == k2) {
+	  for(int z = 1; z < bru.size(); z++) {
+	    if(z == k2) {
 	      cout<<k2 << endl;
 	      bru[z] = c;
 	      break;
@@ -148,7 +149,7 @@ int main() {
 	}
 	adj[i] = br;
       }
-    }//djaskra
+    }
     else if(strcmp(arr,"SHORT") == 0) {
       int length = adj.size();
       cout<<"Enter first node" << endl;
